@@ -1,0 +1,23 @@
+.list-menu ul {
+  padding: 0;
+}
+
+.list-menu li {
+  padding: 0.5em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+  transition: 0.3 ease-in;
+}
+
+.list-menu li:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    189deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(195, 81, 212, 1) 0%,
+    rgba(150, 65, 224, 1) 100%
+  );
+  color: #fff;
+}
