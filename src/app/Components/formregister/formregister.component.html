@@ -1,34 +1,34 @@
 <section>
 
-    <form class="row g-3">
-        <div class="col-md-6">
-          <label for="userName" class="form-label">Name</label>
-          <input type="text" class="form-control" id="userName">
-        </div>
-        <div class="col-md-6">
-          <label for="userLastName" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="userLastNam">
-        </div>
-        <div class="col-md-6">
-          <label for="userEmail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="userEmail" placeholder="user@mail.com">
-        </div>
-        <div class="col-md-6">
-          <label for="userPhone" class="form-label">Phone</label>
-          <input type="tel" class="form-control" id="userPhone" placeholder="358458484">
-        </div>
-        <div class="col-md-6">
-          <label for="userPass" class="form-label">Password</label>
-          <input type="password" class="form-control" id="userPass">
-        </div>
-        <div class="col-md-6">
-            <label for="userConPass" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="userConPass">
-          </div>  
-      
-          <br/>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </form>
+  <form class="row g-3" [formGroup]="formUser" (ngSubmit)="sendForm()">
+    <div class="col-md-6">
+      <label for="userName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="userName" formControlName="name">
+    </div>
+    <div class="col-md-6">
+      <label for="userLastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="userLastNam" formControlName="lastName">
+    </div>
+    <div class="col-md-6">
+      <label for="userEmail" class="form-label">Email</label>
+      <input type="email" class="form-control" id="userEmail" placeholder="user@mail.com" formControlName="email">
+    </div>
+    <div class="col-md-6">
+      <label for="userPhone" class="form-label">Phone</label>
+      <input type="tel" class="form-control" id="userPhone" placeholder="358458484" formControlName="phone">
+    </div>
+    <div class="col-md-6">
+      <label for="userPass" class="form-label">Password</label>
+      <input type="password" class="form-control" id="userPass" formControlName="password">
+    </div>
+    <div class="col-md-6">
+      <label for="userConPass" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="userConPass" formControlName="confPassword">
+    </div>
+
+    <br />
+    <div class="col-12">
+      <button type="submit"  class="btn btn-primary">Sign in</button>
+    </div>
+  </form>
 </section>
