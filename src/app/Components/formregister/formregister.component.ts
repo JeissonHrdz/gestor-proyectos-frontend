@@ -5,6 +5,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { UserService } from '../../Service/user.service';
 import { User } from '../../Model/user.model';
@@ -21,31 +22,41 @@ export class FormregisterComponent {
 
   private userService = inject(UserService);
   private user?: User;
+  private objectDate: Date = new Date();
+  private dateRegiser: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
+  confPasswords: boolean = true
 
   constructor(private form: FormBuilder) {
     this.formUser = this.form.group({
-      name: [''],
-      lastName: [''],
-      email: [''],
-      phone: [''],
-      password: [''],
-      confPassword: [''],
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required]],
+      dateRegister: ['' + this.dateRegiser, [Validators.required]],
+      idRol: ['1', [Validators.required]],
+      password: ['', [Validators.required]],
+      confPassword: ['', [Validators.required]],
     });
   }
 
   sendForm() {
-    this.user = new User(      
-      this.formUser.get('name'),
-      this.formUser.get('lastName'),
-      this.formUser.get('email'),
-      this.formUser.get('phone'),
-      0,
-      this.formUser.get('password')
+    if (this.formUser.valid) {
+      if (this.formUser.get('password').value === this.formUser.get('confPassword').value) {
+        this.confPasswords = true;
+        const sendForm = this.formUser.value;
+        this.userService.newUser(sendForm).subscribe(() => {
+          console.log('exito');
+        });
+      } else {
+        this.confPasswords = false;
+      }
+    }
+  }
+
+  hasErrors(controlName: string, errorType: string) {
+    return (
+      this.formUser.get(controlName)?.hasError(errorType) &&
+      this.formUser.get(controlName)?.touched
     );
-    console.log(this.user)
-    this.userService.newUser(this.user)
-    .subscribe(() =>{
-      console.log("exito");
-    })
   }
 }
