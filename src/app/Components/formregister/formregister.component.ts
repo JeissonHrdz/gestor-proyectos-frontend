@@ -10,6 +10,8 @@ import {
 import { UserService } from '../../Service/user.service';
 import { User } from '../../Model/user.model';
 
+
+
 @Component({
   selector: 'app-formregister',
   standalone: true,
@@ -18,7 +20,7 @@ import { User } from '../../Model/user.model';
   styleUrl: './formregister.component.css',
 })
 export class FormregisterComponent {
-  formUser: FormGroup | any;
+  formUser?: FormGroup | any;
 
   private userService = inject(UserService);
   private user?: User;
@@ -45,7 +47,7 @@ export class FormregisterComponent {
         this.confPasswords = true;
         const sendForm = this.formUser.value;
         this.userService.newUser(sendForm).subscribe(() => {
-          console.log('exito');
+     
         });
       } else {
         this.confPasswords = false;
@@ -58,5 +60,9 @@ export class FormregisterComponent {
       this.formUser.get(controlName)?.hasError(errorType) &&
       this.formUser.get(controlName)?.touched
     );
+  }
+
+  closeModalRegister(){
+    $('#exampleModal').hide('fast');
   }
 }

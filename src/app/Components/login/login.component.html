@@ -1,33 +1,47 @@
 <section class="container-fluid ">
-    <div class="container w-25 position-absolute top-50 start-50 translate-middle">
-        <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>         
-            <button type="submit" class="btn btn-primary">Login</button>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-primary ms-2">Register</button>
-          </form>
-    </div>
+  <div class="container w-25 position-absolute top-50 start-50 translate-middle">
+    <form [formGroup]="formLogin" (ngSubmit)="login()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" [ngClass]="{'is-invalid': hasErrors('email','required') ||   hasErrors('email','email')}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+        <div class="text-danger" *ngIf="hasErrors('email','required')">
+          Campo Requerido
+        </div>
+        <div class="text-danger" *ngIf="hasErrors('email','email')">
+          Email invalido
+        </div>
+        <div id="emailHelp" class="form-text">Nunca compartas tu direccion de email con desconocidos</div>  
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+        <input  [ngClass]="{'is-invalid': hasErrors('password','required')}" formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+        <div class="text-danger" *ngIf="hasErrors('password','required')">
+          Campo Requerido
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+      <br>
+      <br>
+      <div id="emailHelp" class="form-text">¿No tienes cuenta?
+        <a  class="link-offset-2 link-underline link-underline-opacity-0" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Registrate aqui.</a>
+      </div>
+    </form>
+  </div>
 </section>
 
 <!-- Modal Register -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-      <app-formregister/>
-        </div>
-        
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Registro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <app-formregister />
+      </div>
+
     </div>
   </div>
+</div>

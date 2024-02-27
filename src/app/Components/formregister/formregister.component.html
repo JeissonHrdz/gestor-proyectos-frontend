@@ -2,57 +2,63 @@
 
   <form class="row g-3" [formGroup]="formUser" (ngSubmit)="sendForm()">
     <div class="col-md-6">
-      <label for="userName" class="form-label">Name</label>
-      <input type="text" [ngClass]="{'is-invalid': hasErrors('name','required')}" class="form-control" id="userName" formControlName="name">
+      <label for="userName" class="form-label">Nombre</label>
+      <input type="text" [ngClass]="{'is-invalid': hasErrors('name','required')}" class="form-control" id="userName"
+        formControlName="name">
       <div class="text-danger" *ngIf="hasErrors('name','required')">
         Campo requerido
-    </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <label for="userLastName" class="form-label">Last Name</label>
-      <input type="text" [ngClass]="{'is-invalid': hasErrors('lastName','required')}" class="form-control" id="userLastName" formControlName="lastName">
+      <label for="userLastName" class="form-label">Apellido</label>
+      <input type="text" [ngClass]="{'is-invalid': hasErrors('lastName','required')}" class="form-control"
+        id="userLastName" formControlName="lastName">
       <div class="text-danger" *ngIf="hasErrors('lastName','required')">
         Campo requerido
-    </div>
+      </div>
     </div>
     <div class="col-md-6">
       <label for="userEmail" class="form-label">Email</label>
-      <input type="email" [ngClass]="{'is-invalid': hasErrors('email','required') ||   hasErrors('email','email')}" class="form-control" id="userEmail" placeholder="user@mail.com" formControlName="email">
+      <input type="email" [ngClass]="{'is-invalid': hasErrors('email','required') ||   hasErrors('email','email')}"
+        class="form-control" id="userEmail" placeholder="user@mail.com" formControlName="email">
       <div class="text-danger" *ngIf="hasErrors('email','required')">
         Campo requerido
-    </div>
-    <div class="text-danger" *ngIf="hasErrors('email','email')">
-      Email Invalido
-  </div>
+      </div>
+      <div class="text-danger" *ngIf="hasErrors('email','email')">
+        Email Invalido
+      </div>
     </div>
     <div class="col-md-6">
-      <label for="userPhone" class="form-label">Phone</label>
-      <input type="number" [ngClass]="{'is-invalid': hasErrors('phone','required')}" class="form-control" id="userPhone" placeholder="358458484" formControlName="phone">
+      <label for="userPhone" class="form-label">Telefono</label>
+      <input type="number" [ngClass]="{'is-invalid': hasErrors('phone','required')}" class="form-control" id="userPhone"
+        placeholder="314 210 1348" formControlName="phone">
       <div class="text-danger" *ngIf="hasErrors('phone','required')">
         Campo requerido
-    </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <label for="userPass" class="form-label">Password</label>
-      <input type="password" [ngClass]="{'is-invalid': hasErrors('password','required')}" class="form-control" id="userPass" formControlName="password">
+      <label for="userPass" class="form-label">Contraseña</label>
+      <input type="password" [ngClass]="{'is-invalid': hasErrors('password','required')}" class="form-control"
+        id="userPass" formControlName="password">
       <div class="text-danger" *ngIf="hasErrors('password','required')">
         Campo requerido
-    </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <label for="userConPass" class="form-label">Confirm Password</label>
-      <input type="password" [ngClass]="{'is-invalid': hasErrors('confPassword','required')}" class="form-control" id="userConPass" formControlName="confPassword">
+      <label for="userConPass" class="form-label">Confirmar Contraseña</label>
+      <input type="password" [ngClass]="{'is-invalid': hasErrors('confPassword','required')}" class="form-control"
+        id="userConPass" formControlName="confPassword">
       <div class="text-danger" *ngIf="hasErrors('confPassword','required')">
         Campo requerido
-    </div>
+      </div>
     </div>
     <div class="text-danger" *ngIf="!confPasswords">
       Las contraseñas no coinciden
-  </div>
+    </div>
 
     <br />
     <div class="col-12">
-      <button type="submit"  class="btn btn-primary">Sign in</button>
+      <button type="submit" id="btn-register" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
     </div>
   </form>
 </section>
