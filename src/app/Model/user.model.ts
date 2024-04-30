@@ -7,6 +7,7 @@ export interface User {
   idRol: number;
   dateRegister: string;
   password: string;
+  username: string;
 
   // constructor(
   
