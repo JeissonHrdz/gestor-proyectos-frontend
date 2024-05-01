@@ -18,6 +18,9 @@
         <div class="text-danger" *ngIf="hasErrors('password','required')">
           Campo Requerido
         </div>
+        <div class="text-danger" *ngIf="!errorInputData">
+          Usuario o Contrsaeña incorrectos
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
       <br>

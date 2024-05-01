@@ -41,4 +41,8 @@ export class LoginService {
 get userData():Observable<String>{
   return this.currentUserData.asObservable();
 }
+
+get userToken():String{
+  return this.currentUserData.value;
+}
 }

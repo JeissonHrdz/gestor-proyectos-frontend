@@ -23,6 +23,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   formLogin?: FormGroup | any;
+  errorInputData:boolean = true;
 
   
     private router = inject(Router);
@@ -46,12 +47,15 @@ export class LoginComponent {
       this.loginService.login(this.formLogin?.value as LoginRequest).subscribe({
         next: (userData:any) => {
           console.log(userData);
+       
         },
         error: (errorData:any) => {
           console.log(errorData);
+          this.errorInputData = false;
         },
         complete: () => {
           console.info('Login Completo');
+          this.errorInputData = true;
           this.router.navigateByUrl('/inicio');
           this.formLogin?.reset();
         }
