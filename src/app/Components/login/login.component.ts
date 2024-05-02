@@ -23,11 +23,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   formLogin?: FormGroup | any;
-  errorInputData:boolean = true;
+  errorInputData: boolean = true;
 
-  
-    private router = inject(Router);
-  constructor(private form: FormBuilder, private loginService:LoginService) {
+
+  private router = inject(Router);
+  constructor(private form: FormBuilder, private loginService: LoginService) {
     this.formLogin = this.form.group({
       username: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -45,24 +45,24 @@ export class LoginComponent {
   login() {
     if (this.formLogin.valid) {
       this.loginService.login(this.formLogin?.value as LoginRequest).subscribe({
-        next: (userData:any) => {
+        next: (userData: any) => {
           console.log(userData);
-       
+
         },
-        error: (errorData:any) => {
+        error: (errorData: any) => {
           console.log(errorData);
           this.errorInputData = false;
         },
         complete: () => {
           console.info('Login Completo');
-          this.errorInputData = true;
-          this.router.navigateByUrl('/inicio');
+          this.errorInputData = true;       
+          this.router.navigate(['/dashboard']);
           this.formLogin?.reset();
         }
       });
     } else {
-        this.formLogin?.markAllAsTouched();
-        alert("Error al ingresar los datos")
+      this.formLogin?.markAllAsTouched();
+      alert("Error al ingresar los datos")
     }
   }
 
@@ -72,4 +72,8 @@ export class LoginComponent {
       this.formLogin.get(controlName)?.touched
     );
   }
+
+
+  
+
 }
