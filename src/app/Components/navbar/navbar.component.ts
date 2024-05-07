@@ -13,10 +13,26 @@ export class NavbarComponent {
 
   private loginService = inject(LoginService);
   private router = inject(Router)
+  menuState: boolean = true;
 
-  logout(){
+  logout() {
     this.loginService.logout();
     this.router.navigate(['/login']);
+  }
+
+  hideMenu() {
+    if (this.menuState) {
+      $(".menu").animate({width: "50px"})
+      
+      $(".box-container").animate({width: "95%"})
+
+    
+      this.menuState = false;
+    } else {
+      $(".menu").animate({width: "250px"})
+      this.menuState = true;
+
+    }
   }
 
 }

@@ -1,13 +1,11 @@
 .menu-left {
-
-  position: absolute;
+ 
   height: 100%;
-  width: 1350px;
-  height: calc(100% - 56px);
 }
 
 .list-menu ul {
   padding: 0;
+ 
 }
 
 .list-menu li { 
@@ -18,6 +16,7 @@
   text-decoration: none;
   transition: 0.3 ease-in;
   color: rgb(212, 212, 212);
+  transition: .2s ease-in-out;
 }
 
 .list-menu li:hover {
@@ -28,10 +27,3 @@ i{
   font-size: 18px;
 }
 
-.menu-dropdown{
-  display: none;
-}
-
-.list-menu li:hover .menu-dropdown{
-  display: block;
-}
