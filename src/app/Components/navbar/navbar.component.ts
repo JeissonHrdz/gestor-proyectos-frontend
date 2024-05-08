@@ -22,11 +22,8 @@ export class NavbarComponent {
 
   hideMenu() {
     if (this.menuState) {
-      $(".menu").animate({width: "50px"})
-      
-      $(".box-container").animate({width: "95%"})
-
-    
+      $(".menu").animate({width: "50px"})      
+      $(".box-container").animate({width: "95%"})    
       this.menuState = false;
     } else {
       $(".menu").animate({width: "250px"})

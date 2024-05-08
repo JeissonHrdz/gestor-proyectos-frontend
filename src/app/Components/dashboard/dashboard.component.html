@@ -6,8 +6,8 @@
         <div class="menu col-2 p-0" style=" width: 250px;" >
             <app-menu-left></app-menu-left>
         </div>
-        <div class="box-container col-10 p-0" style="width: calc(100% - 250px);  background-color:  blueviolet;">
-            <app-proyects></app-proyects>
+        <div class="box-container col-10 p-4" style="width: calc(100% - 250px);">
+            <app-proyects  *ngIf="loadProyects"></app-proyects>
         </div>
     </div>
 </section>

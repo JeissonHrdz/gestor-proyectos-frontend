@@ -2,9 +2,9 @@
   <div class=" m-0 menu-left">
     <div class="  m-0 p-0">
       <div class="container-fluid m-0 p-0 mt-0 list-menu">
-        <ul class="pt-3">
-          <li [routerLink]="['/proyects']" routerLinkActive="router-link-active" ><i class="bi bi-speedometer2 me-5"></i>Dashborad</li>
-          <li><i class="bi bi-person-workspace me-5"></i>Proyects</li>
+        <ul class="pt-3 poppins-light">
+          <li><i class="bi bi-speedometer2 me-5"></i>Dashborad</li>
+          <li (click)="loadProyectComponent()" ><i class="bi bi-person-workspace me-5"></i>Proyects</li>
           <li><i class="bi bi-person-vcard me-5"></i>Contact</li>
           <li><i class="bi bi-calendar-date me-5"></i>Calendar</li>
           <li><i class="bi bi-gear me-5"></i>Settings</li>
