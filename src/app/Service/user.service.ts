@@ -18,6 +18,10 @@ export class UserService {
     return this.http.post<User>(`${this.urlBase}/user`, user);
   }
 
+  getIdUSer():number{
+    return 4;
+  }
+
   
 
  

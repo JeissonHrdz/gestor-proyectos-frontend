@@ -1,1 +1,33 @@
-<p>add-proyect works!</p>
+<section class="container-fluid p-4">
+    <div>
+        <form  [formGroup]="formProyect" (ngSubmit)="sendForm()"> 
+            <div class="row">
+                <div class="col-12">
+                    <label for="proyectName" class="form-label">Proyect Name</label>
+                    <input type="text" class="form-control" id="proyectName" aria-describedby="ProyectName"  formControlName="proyectName">
+                </div>
+           
+            </div>
+            <br> 
+            <div class="row">
+                <div class="col-6">
+                    <label for="proyectStart" class="form-label">Date Start</label>
+                    <input type="date" class="form-control" id="proyectStart" aria-describedby="ProyectStart"  formControlName="dateStart">
+
+                </div>
+               
+                <div class="col-6">
+                    <label for="proyectEnd" class="form-label">Date End</label>
+                    <input type="date" class="form-control" id="proyectEnd" aria-describedby="ProyectEnd"  formControlName="dateEnd">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary float-end">Create</button>
+                </div>
+            </div>
+             
+        </form>
+    </div>
+</section>

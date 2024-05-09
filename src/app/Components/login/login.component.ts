@@ -58,6 +58,7 @@ export class LoginComponent {
           this.errorInputData = true;       
           this.router.navigate(['/dashboard']);
           this.formLogin?.reset();
+      
         }
       });
     } else {
