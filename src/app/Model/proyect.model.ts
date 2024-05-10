@@ -3,4 +3,5 @@ export interface Proyect{
     dateStart:string
     dateEnd:string
     idUser:number    
+    dateCreation:string
 }

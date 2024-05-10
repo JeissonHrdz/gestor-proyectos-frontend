@@ -27,10 +27,10 @@ export class JwtInterceptorService implements HttpInterceptor {
   }  
 
 
-  getUsernameFromToken():string{
+  getIdFromToken():string{
     let token = this.loginService.userToken;  
     let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
-    return decodedJWT.sub;
+    return decodedJWT.UUID;  
   }
   
 

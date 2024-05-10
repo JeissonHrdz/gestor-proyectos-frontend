@@ -57,8 +57,7 @@ export class LoginComponent {
           console.info('Login Completo');
           this.errorInputData = true;       
           this.router.navigate(['/dashboard']);
-          this.formLogin?.reset();
-      
+          this.formLogin?.reset();         
         }
       });
     } else {
