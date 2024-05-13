@@ -16,9 +16,7 @@ export class JwtInterceptorService implements HttpInterceptor {
     let token: String = this.loginService.userToken;
     if (token != "") {
       req = req.clone({
-        setHeaders: {
-          'Content-Type': 'application/json;charset=utf-8',
-          'Accept': 'application/json',
+        setHeaders: {          
           'Authorization': `Bearer ${token}`,
         },
       });
