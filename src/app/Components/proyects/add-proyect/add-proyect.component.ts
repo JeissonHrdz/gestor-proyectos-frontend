@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProyectService } from '../../../Service/proyect.service';
 import { JwtInterceptorService } from '../../../Service/jwt-interceptor.service';
+import { LoginService } from '../../../Service/login.service';
 
 @Component({
   selector: 'app-add-proyect',
@@ -18,7 +19,7 @@ export class AddProyectComponent {
   private jwtInterceptor = inject(JwtInterceptorService)
   private objectDate: Date = new Date();
   private dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
-
+private loginService = inject(LoginService) 
   constructor(private form: FormBuilder){
     this.formProyect = this.form.group({
       name: [''],
@@ -30,6 +31,9 @@ export class AddProyectComponent {
   }
 
   sendForm() {
+
+    let token: String = this.loginService.userToken;
+    console.log("TOKEN: "+token)
     const sendForm = this.formProyect.value;
     this.proyectService.newProyect(sendForm).subscribe(() =>{});
     }

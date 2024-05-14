@@ -10,12 +10,14 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class ProyectService {
 
   private http = inject(HttpClient); 
+  
   private jwtInterceptos  = inject(JwtInterceptorService)
   private urlBase:string = "http://localhost:8080/app";
 
   constructor() {}
 
   newProyect(proyect:Proyect):Observable<Proyect> {
+
     return this.http.post<Proyect>(`${this.urlBase}/proyect`, proyect).pipe(
       catchError(this.handleError))
   }
