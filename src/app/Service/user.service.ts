@@ -1,7 +1,10 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { Injectable, NgModule, inject } from '@angular/core';
 import { User } from '../Model/user.model';
 import { Observable } from 'rxjs';
+import { JwtInterceptorService } from './jwt-interceptor.service';
+
+
 
 
 @Injectable({

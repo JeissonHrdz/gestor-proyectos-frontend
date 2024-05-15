@@ -4,7 +4,9 @@
             <div class="row">
                 <div class="col-12">
                     <label for="proyectName" class="form-label">Proyect Name</label>
-                    <input type="text" class="form-control" id="proyectName" aria-describedby="ProyectName"  formControlName="name">
+                    <input type="text" [ngClass]="{'is-invalid': hasErrors('name','required')}" 
+                    class="form-control" id="proyectName" aria-describedby="ProyectName"  
+                    formControlName="name">
                 </div>
            
             </div>
@@ -12,13 +14,17 @@
             <div class="row">
                 <div class="col-6">
                     <label for="proyectStart" class="form-label">Date Start</label>
-                    <input type="date" class="form-control" id="proyectStart" aria-describedby="ProyectStart"  formControlName="dateStart">
+                    <input type="date" [ngClass]="{'is-invalid': hasErrors('dateStart','required')}" 
+                    class="form-control" id="proyectStart" aria-describedby="ProyectStart" 
+                    formControlName="dateStart">
 
                 </div>
                
                 <div class="col-6">
                     <label for="proyectEnd" class="form-label">Date End</label>
-                    <input type="date" class="form-control" id="proyectEnd" aria-describedby="ProyectEnd"  formControlName="dateEnd">
+                    <input type="date" [ngClass]="{'is-invalid': hasErrors('dateEnd','required')}" 
+                    class="form-control" id="proyectEnd" aria-describedby="ProyectEnd"  
+                    formControlName="dateEnd">
                 </div>
             </div>
             <br>

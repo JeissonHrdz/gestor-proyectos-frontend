@@ -1,8 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { inject, Injectable, NgModule } from '@angular/core';
 import { Proyect } from '../Model/proyect.model';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { catchError, Observable, throwError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
