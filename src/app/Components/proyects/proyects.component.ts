@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AddProyectComponent } from "./add-proyect/add-proyect.component";
+import { ProyectService } from '../../Service/proyect.service';
+import { Proyect } from '../../Model/proyect.model';
+import { JwtInterceptorService } from '../../Service/jwt-interceptor.service';
 
 @Component({
     selector: 'app-proyects',
@@ -10,5 +13,20 @@ import { AddProyectComponent } from "./add-proyect/add-proyect.component";
     imports: [CommonModule, AddProyectComponent]
 })
 export class ProyectsComponent {
+
+    proyects?:Array<any>
+
+    private proyectService = inject(ProyectService)
+    private jwtInterceptor = inject(JwtInterceptorService);
+
+    ngOnInit(){       
+        this.getAllByUser();
+
+    }
+
+    getAllByUser(){
+        this.proyectService.showProyectByUser(parseInt(this.jwtInterceptor.getIdFromToken()))
+        .subscribe((data: Proyect[]) => this.proyects = data)
+    } 
 
 }

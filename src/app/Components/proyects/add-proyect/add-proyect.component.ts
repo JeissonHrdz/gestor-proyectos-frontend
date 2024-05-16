@@ -27,6 +27,7 @@ export class AddProyectComponent {
   private dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
   private loginService = inject(LoginService);
 
+
   constructor(private form: FormBuilder) {
     this.formProyect = this.form.group({
       name: ['', [Validators.required]],
@@ -41,43 +42,26 @@ export class AddProyectComponent {
   }
 
   sendForm() {
-    this.dateValidator();
-    /*if (this.formProyect.valid) {
-      let token: String = this.loginService.userToken;
-      console.log('TOKEN: ' + token);
-      const sendForm = this.formProyect.value;
-      this.proyectService.newProyect(sendForm).subscribe(() => {});
-    }*/
+    if (!this.dateStartValidator() && !this.dateEndValidator()) {
+      if (this.formProyect.valid) {
+        let token: String = this.loginService.userToken;
+        const sendForm = this.formProyect.value;
+        this.proyectService.newProyect(sendForm).subscribe(() => {});
+      }
+    }
   }
 
-  dateValidator() {
+  dateStartValidator() {
+    let dateStartValidate: Date = new Date(this.formProyect.value.dateStart);
+    let dateToday: Date = new Date();
+    return (dateStartValidate.getTime() < dateToday.getTime())    
+  }
+
+  dateEndValidator() {
     let dateStartValidate: Date = new Date(this.formProyect.value.dateStart);
     let dateEndValidate: Date = new Date(this.formProyect.value.dateEnd);
-    let dateToday: Date = new Date();
-
-    if (
-      (dateStartValidate.getUTCDate() >= dateToday.getDate() &&
-        dateStartValidate.getUTCMonth() == dateToday.getMonth()) ||
-      (((dateStartValidate.getUTCDate() >= dateToday.getDate() &&
-        dateStartValidate.getUTCMonth() > dateToday.getMonth()) ||
-        (dateStartValidate.getUTCDate() <= dateToday.getDate() &&
-          dateStartValidate.getUTCMonth() > dateToday.getMonth())) &&
-        dateStartValidate.getUTCFullYear() >= dateToday.getFullYear())
-    ) {
-      
-    }
-
-    if (
-      (dateEndValidate.getUTCDate() > dateStartValidate.getUTCDate() &&
-        dateStartValidate.getUTCMonth() == dateToday.getMonth()) ||
-      (((dateStartValidate.getUTCDate() >= dateToday.getDate() &&
-        dateStartValidate.getUTCMonth() > dateToday.getMonth()) ||
-        (dateStartValidate.getUTCDate() <= dateToday.getDate() &&
-          dateStartValidate.getUTCMonth() > dateToday.getMonth())) &&
-        dateStartValidate.getUTCFullYear() >= dateToday.getFullYear())
-    ) {
-      
-    }
+    return ( dateEndValidate.getTime() < dateStartValidate.getTime())
+    
   }
 
   hasErrors(controlName: string, errorType: string) {

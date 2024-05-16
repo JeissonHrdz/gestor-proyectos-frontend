@@ -12,7 +12,6 @@ export class JwtInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token: String = this.loginService.userToken;
-    console.log("TOKEN: "+token)
     if (token != "") {
       req = req.clone(
         {
