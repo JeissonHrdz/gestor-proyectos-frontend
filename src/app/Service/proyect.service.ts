@@ -23,9 +23,9 @@ export class ProyectService {
       catchError(this.handleError))
   }
 
-  showProyectByUser(idUser:number):Observable<Proyect[]> {
+  showProyectByUser(idUser:number):Observable<Array<Proyect>> {
 
-    return this.http.get<Proyect[]>(`${this.urlBase}/proyects/${idUser}`);
+    return this.http.get<Array<Proyect>>(`${this.urlBase}/proyects/${idUser}`);
   }
 
 

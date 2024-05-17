@@ -14,7 +14,7 @@ import { JwtInterceptorService } from '../../Service/jwt-interceptor.service';
 })
 export class ProyectsComponent {
 
-    proyects?:Array<any>
+    proyects?: Array<Proyect> = [];
 
     private proyectService = inject(ProyectService)
     private jwtInterceptor = inject(JwtInterceptorService);
@@ -26,7 +26,10 @@ export class ProyectsComponent {
 
     getAllByUser(){
         this.proyectService.showProyectByUser(parseInt(this.jwtInterceptor.getIdFromToken()))
-        .subscribe((data: Proyect[]) => this.proyects = data)
+        .subscribe((data:Array<Proyect>) =>{
+             console.log(data);  
+             this.proyects = data
+            })
     } 
 
 }
