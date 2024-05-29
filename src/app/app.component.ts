@@ -7,6 +7,7 @@ import { FormregisterComponent } from './Components/formregister/formregister.co
 import { LoginService } from './Service/login.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectDetailsComponent } from './Components/proyects/project-details/project-details.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     FormregisterComponent,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ProjectDetailsComponent
   ],
 })
 export class AppComponent {

@@ -4,13 +4,14 @@ import { AddProyectComponent } from "./add-proyect/add-proyect.component";
 import { ProyectService } from '../../Service/proyect.service';
 import { Proyect } from '../../Model/proyect.model';
 import { JwtInterceptorService } from '../../Service/jwt-interceptor.service';
+import { ProjectDetailsComponent } from "./project-details/project-details.component";
 
 @Component({
     selector: 'app-proyects',
     standalone: true,
     templateUrl: './proyects.component.html',
     styleUrl: './proyects.component.css',
-    imports: [CommonModule, AddProyectComponent]
+    imports: [CommonModule, AddProyectComponent, ProjectDetailsComponent]
 })
 export class ProyectsComponent {
 
@@ -26,8 +27,7 @@ export class ProyectsComponent {
 
     getAllByUser(){
         this.proyectService.showProyectByUser(parseInt(this.jwtInterceptor.getIdFromToken()))
-        .subscribe((data:Array<Proyect>) =>{
-             console.log(data);  
+        .subscribe((data:Array<Proyect>) =>{          
              this.proyects = data
             })
     } 

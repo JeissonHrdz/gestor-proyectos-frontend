@@ -8,7 +8,7 @@
     <br><br>
     <div class="row">
         <div class="col-4" *ngFor="let item of proyects">
-            <div class="border p-4 shadow ">
+            <div class="border p-4 shadow " (click)="getProjectDetails()">
                 <h6 class="poppins-medium">{{item.name}}</h6>
                 <span class="badge text-bg-primary p-2 poppins-light">In Progress</span>
                 <hr>
@@ -42,6 +42,7 @@
     </div>
 
 </section>
+<app-project-details *ngIf=""></app-project-details>
 
 <!-- Modal add Proyect -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -52,7 +53,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <app-add-proyect />
+          <app-add-proyect/>
         </div>
   
       </div>
