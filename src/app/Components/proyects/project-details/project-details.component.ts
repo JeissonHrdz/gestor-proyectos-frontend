@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-project-details',
   standalone: true,
@@ -10,4 +11,7 @@ import { Component } from '@angular/core';
 })
 export class ProjectDetailsComponent {
 
+  ngOnInit(){
+   
+  }
 }

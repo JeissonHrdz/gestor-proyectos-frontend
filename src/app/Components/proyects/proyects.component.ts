@@ -5,6 +5,7 @@ import { ProyectService } from '../../Service/proyect.service';
 import { Proyect } from '../../Model/proyect.model';
 import { JwtInterceptorService } from '../../Service/jwt-interceptor.service';
 import { ProjectDetailsComponent } from "./project-details/project-details.component";
+import { ProyectDetailsService } from '../../Service/proyect-details.service';
 
 @Component({
     selector: 'app-proyects',
@@ -15,13 +16,21 @@ import { ProjectDetailsComponent } from "./project-details/project-details.compo
 })
 export class ProyectsComponent {
 
+
     proyects?: Array<Proyect> = [];
+
+    proyectDetails: boolean = false;
+
+    private proyectDetailsService = inject(ProyectDetailsService)
 
     private proyectService = inject(ProyectService)
     private jwtInterceptor = inject(JwtInterceptorService);
 
     ngOnInit(){       
         this.getAllByUser();
+        this.proyectDetailsService.proyectDetails.subscribe(data => {
+            this.proyectDetails = data;
+        })
 
     }
 
@@ -31,5 +40,9 @@ export class ProyectsComponent {
              this.proyects = data
             })
     } 
+
+    getProjectDetails() {
+        this.proyectDetailsService.proyectDetails.next(true);        
+        }
 
 }
