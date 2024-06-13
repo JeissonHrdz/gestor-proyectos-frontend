@@ -1,13 +1,13 @@
 <section class="container-fluid ">
     <div class="container">
-        <h3>Title Project</h3>
+        <h3>{{proyect?.name}}</h3>
     </div>
     <br>
     <div class="container">
         <div class="row g-0">
             <div class="col-sm-6 col-md-8">
-                <h3 style="font-weight: 500;" class="float-start me-4">Sprint Planing</h3>
-                <button class="btn btn-primary float-start">Create Sprint</button>
+                <h3 style="font-weight: 500;" class="float-start me-4">Sprint Planing</h3>               
+                <button data-bs-toggle="modal" data-bs-target="#sprintModal" class="btn btn-primary float-start p-2 poppins-light ">Create Sprint</button>
             </div>
             <div class="col-6 col-md-4">
             </div>
@@ -21,30 +21,58 @@
     <div class="row">
         <div class="col-3">
             <h6>Backlog</h6>
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-header">Task 1</div>
-                <div class="card-body">
-                    <h6 class="card-title">Crear el login.</h6>
-                    <p class="card-text">
-                        <span class="badge text-bg-secondary">Not Started</span>
-                       </p>
+
+            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+                class="example-list" (cdkDropListDropped)="drop($event)">
+                @for (item of todo; track item) {
+
+                <div class="card text-bg-light mb-3 example-box" style="max-width: 18rem;" cdkDrag>
+                    <div class="card-header">{{item}}1</div>
+                    <div class="card-body">
+                        <h6 class="card-title">Crear el login.</h6>
+                        <p class="card-text">
+                            <span class="badge text-bg-secondary">Not Started</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-header">Task 2</div>
-                <div class="card-body">
-                    <h6 class="card-title">Programar funciones</h6>
-                    <p class="card-text">
-                        <span class="badge  text-bg-secondary">Not Started</span>
-                       </p>
-                </div>
+                }
             </div>
         </div>
         <div class="col-9">
             <h6>Sprint 1</h6>
-        </div>
+            <div class="example-container">             
+                <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+                    class="example-list" (cdkDropListDropped)="drop($event)">
+                    @for (item of done; track item) {
 
+                    <div class="card text-bg-light mb-3 example-box"  cdkDrag>
+                        <div class="card-header">{{item}}1</div>
+                        <div class="card-body">
+                            <h6 class="card-title">Crear el login.</h6>
+                            <p class="card-text">
+                                <span class="badge text-bg-secondary">Not Started</span>
+                            </p>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 
-
 </div>
+<!--MODAL SPRINT-->
+<div class="modal fade" id="sprintModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Sprint</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-create-sprint></app-create-sprint>
+        </div>
+  
+      </div>
+    </div>
+  </div>

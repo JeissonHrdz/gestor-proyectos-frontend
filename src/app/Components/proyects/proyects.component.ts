@@ -6,6 +6,7 @@ import { Proyect } from '../../Model/proyect.model';
 import { JwtInterceptorService } from '../../Service/jwt-interceptor.service';
 import { ProjectDetailsComponent } from "./project-details/project-details.component";
 import { ProyectDetailsService } from '../../Service/proyect-details.service';
+import { SprintService } from '../../Service/sprint.service';
 
 @Component({
     selector: 'app-proyects',
@@ -18,6 +19,7 @@ export class ProyectsComponent {
 
 
     proyects?: Array<Proyect> = [];
+    private sprintService = inject(SprintService);
 
     proyectDetails: boolean = false;
 
@@ -41,8 +43,13 @@ export class ProyectsComponent {
             })
     } 
 
-    getProjectDetails() {
-        this.proyectDetailsService.proyectDetails.next(true);        
+    getProjectDetails(idProyect:number) {
+        this.proyectDetailsService.proyectDetails.next(true);       
+        this.proyects?.forEach(element => {
+            if(element.idProyect === idProyect){
+                this.proyectDetailsService.proyectInfo.next(element);
+            }
+        });      
         }
 
 }

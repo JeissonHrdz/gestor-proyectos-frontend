@@ -11,6 +11,7 @@ import {
 } from '@angular/common/http';
 import { JwtInterceptorService } from './Service/jwt-interceptor.service';
 import { ErrorInterceptorService } from './Service/error-interceptor.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     },
 
     provideRouter(routes),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync(),
 
     // {provide: HTTP_INTERCEPTORS, useFactory: ErrorInterceptorService,multi:true}
   ],

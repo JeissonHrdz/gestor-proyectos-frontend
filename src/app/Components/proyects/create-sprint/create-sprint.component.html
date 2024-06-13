@@ -1,0 +1,37 @@
+<section class="container-fluid p-4">
+    <div>
+        idproyect: {{proyect?.name}}
+        <form>
+
+            <div class="row">
+                <div class="col-6">
+                    <label for="proyectStart" class="form-label">Date Start</label>
+                    <input type="date" class="form-control" id="proyectStart" aria-describedby="ProyectStart"
+                        formControlName="dateStart">
+                    <br>
+                    <span class="badge text-bg-danger p-2 poppins-light" >
+                        Fecha de Inicio debe ser Mayor que la Fecha Actual
+                    </span>
+
+                </div>
+
+                <div class="col-6">
+                    <label for="proyectEnd" class="form-label">Date End</label>
+                    <input type="date" class="form-control" id="proyectEnd" aria-describedby="ProyectEnd"
+                        formControlName="dateEnd">
+                    <br>
+                    <span class="badge text-bg-danger p-2 poppins-light" >
+                        Fecha de Final debe ser Mayor que la Fecha de Inicio
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary float-end">Create</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>

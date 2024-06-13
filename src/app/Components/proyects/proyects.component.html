@@ -9,7 +9,7 @@
     <br><br>
     <div class="row">
         <div class="col-4" *ngFor="let item of proyects">
-            <div class="border p-4 shadow" (click)="getProjectDetails()" style="cursor: pointer;" >
+            <div class="border p-4 shadow" (click)="getProjectDetails(item.idProyect)" style="cursor: pointer;" >
                 <h6 class="poppins-medium">{{item.name}}</h6>
                 <span class="badge text-bg-primary p-2 poppins-light">In Progress</span>
                 <hr>
