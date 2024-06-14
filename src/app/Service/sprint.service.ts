@@ -5,32 +5,41 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SprintService {
+  private jwtInterceptos = inject(JwtInterceptorService);
+  private urlBase: string = 'http://localhost:8080/app';
+  private http = inject(HttpClient);
 
-  private jwtInterceptos  = inject(JwtInterceptorService)
-  private urlBase:string = "http://localhost:8080/app"
-  private http = inject(HttpClient); ;
-
-  constructor() { }
+  constructor() {}
 
   public idProyect = new BehaviorSubject<number>(0);
 
-  newSprint(sprint:Sprint):Observable<Sprint> {
+  newSprint(sprint: Sprint): Observable<Sprint> {    
 
-    return this.http.post<Sprint>(`${this.urlBase}/proyect`, sprint).pipe(
-      catchError(this.handleError))
+    let idProyect = 0;
+    this.idProyect.subscribe((data) => {
+      idProyect = data;
+    });
+
+    return this.http
+      .post<Sprint>(`${this.urlBase}/proyect/` + idProyect+`/sprint`, sprint)
+      .pipe(catchError(this.handleError));
   }
 
-  private handleError(error:HttpErrorResponse){
-    if(error.status===0){
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
       console.error('Se ha producio un error ', error.error);
+    } else {
+      console.error(
+        'Backend retornó el código de estado ',
+        error.status,
+        error.error
+      );
     }
-    else{
-      console.error('Backend retornó el código de estado ', error.status, error.error);
-    }
-    return throwError(()=> new Error('Algo falló. Por favor intente nuevamente.'));
+    return throwError(
+      () => new Error('Algo falló. Por favor intente nuevamente.')
+    );
   }
 }
-

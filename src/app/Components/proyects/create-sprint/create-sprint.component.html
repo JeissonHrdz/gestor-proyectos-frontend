@@ -1,15 +1,18 @@
 <section class="container-fluid p-4">
     <div>
-        idproyect: {{proyect?.name}}
-        <form>
+        idproyect: {{proyect?.idProyect}}
+        <form  [formGroup]="formSprint" (ngSubmit)="sendForm()">
 
             <div class="row">
                 <div class="col-6">
+                   
+                    <input type="text" name="idProyect" value="SOY UN VALOR" id="idProyect" formControlName="idProyect" >
                     <label for="proyectStart" class="form-label">Date Start</label>
-                    <input type="date" class="form-control" id="proyectStart" aria-describedby="ProyectStart"
+                    <input type="date" [ngClass]="{'is-invalid': hasErrors('dateStart','required')}"
+                        class="form-control" id="proyectStart" aria-describedby="ProyectStart"
                         formControlName="dateStart">
                     <br>
-                    <span class="badge text-bg-danger p-2 poppins-light" >
+                    <span class="badge text-bg-danger p-2 poppins-light" *ngIf="dateStartValidator()">
                         Fecha de Inicio debe ser Mayor que la Fecha Actual
                     </span>
 
@@ -20,7 +23,7 @@
                     <input type="date" class="form-control" id="proyectEnd" aria-describedby="ProyectEnd"
                         formControlName="dateEnd">
                     <br>
-                    <span class="badge text-bg-danger p-2 poppins-light" >
+                    <span class="badge text-bg-danger p-2 poppins-light" *ngIf="dateEndValidator()">
                         Fecha de Final debe ser Mayor que la Fecha de Inicio
                     </span>
                 </div>

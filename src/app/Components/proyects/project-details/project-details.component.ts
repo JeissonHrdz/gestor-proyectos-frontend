@@ -24,8 +24,7 @@ export class ProjectDetailsComponent {
   proyect?:Proyect;
   private proyectDetailsService = inject(ProyectDetailsService);
 
-  ngOnInit(){
-    
+  ngOnInit(){    
   this.proyectDetailsService.proyectInfo.subscribe(data => {
     this.proyect = data
   });
