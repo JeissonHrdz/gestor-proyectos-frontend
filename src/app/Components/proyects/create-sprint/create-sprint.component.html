@@ -1,12 +1,13 @@
 <section class="container-fluid p-4">
     <div>
-        idproyect: {{proyect?.idProyect}}
+     
+
         <form  [formGroup]="formSprint" (ngSubmit)="sendForm()">
 
             <div class="row">
                 <div class="col-6">
                    
-                    <input type="text" name="idProyect" value="SOY UN VALOR" id="idProyect" formControlName="idProyect" >
+                    <input type="text" name="idProyect" id="idProyect" formControlName="idProyect" hidden>
                     <label for="proyectStart" class="form-label">Date Start</label>
                     <input type="date" [ngClass]="{'is-invalid': hasErrors('dateStart','required')}"
                         class="form-control" id="proyectStart" aria-describedby="ProyectStart"

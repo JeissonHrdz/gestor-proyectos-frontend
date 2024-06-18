@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { SprintService } from '../../../Service/sprint.service';
 import { ProyectDetailsService } from '../../../Service/proyect-details.service';
 import { Proyect } from '../../../Model/proyect.model';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -19,34 +19,35 @@ export class CreateSprintComponent {
   private proyectDetailsService = inject(ProyectDetailsService);
   private objectDate: Date = new Date();
   private dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
-  proyect?: Proyect;
+ // proyect?: Proyect | any;
   
   
   ngOnInit(){   
-    this.proyectDetailsService.proyectInfo.subscribe((data) => {
-      this.proyect = data;
-     
-    });
+  
   }
+  constructor(private form: FormBuilder) { 
 
-  constructor(private form: FormBuilder) {
-    this.formSprint = this.form.group({    
-      idProyect: ['', [Validators.required]],
-      dateStart: ['', [Validators.required]],
-      dateEnd: ['', [Validators.required]],     
-      number:[1],
-      dateCreation: ['' + this.dateCreation, [Validators.required]],
+    this.proyectDetailsService.proyectInfo.subscribe((data) => {
+      
+      this.formSprint = this.form.group({    
+        idProyect: [data.idProyect , [Validators.required]],
+        dateStart: ['', [Validators.required]],
+        dateEnd: ['', [Validators.required]],    
+        number: [2],
+        dateCreation: [this.dateCreation, [Validators.required]]
+      });
 
-    });
+    })
+
+ 
   }
   
   sendForm() {
     if (!this.dateStartValidator() && !this.dateEndValidator()) {
      // if (this.formSprint.valid) {
         //let token: String = this.loginService.userToken;
-        
-        const sendForm = this.formSprint.value;
-        console.log(this.proyect?.idProyect +" <---------- ID PROYECT")
+        this.ngOnInit();
+        const sendForm = this.formSprint.value;       
         this.sprintService.newSprint(sendForm).subscribe(() => {});
       //}
     }}
