@@ -27,6 +27,15 @@ export class SprintService {
       .post<Sprint>(`${this.urlBase}/proyect/` + idProyect+`/sprint`, sprint)
       .pipe(catchError(this.handleError));
   }
+  
+
+
+  listSprintByProyect(idProyect:number):Observable<Array<Sprint>> {
+
+    return this.http.get<Array<Sprint>>(`${this.urlBase}/proyect/${idProyect}/sprints`).pipe(
+      catchError(this.handleError));
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
