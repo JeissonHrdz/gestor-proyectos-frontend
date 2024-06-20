@@ -31,16 +31,26 @@ export class CreateSprintComponent {
   sprints: Array<Sprint> = [];
   nSprint: number = 0;
 
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
+
+  ngOnDestroy(): void {
+    
+  }
 
   constructor(private form: FormBuilder) {
-    this.proyectDetailsService.proyectInfo.subscribe((data) => {
-      let numberSprint = this.searchSprintNumber(data.idProyect);
+    this.proyectDetailsService.proyectInfo.subscribe(async (data) => {
+      this.sprintService.idProyect.next(data.idProyect);
+      let numberSprint =  await this.searchSprintNumber(data.idProyect).then((data) => {
+        this.nSprint = data
+      })
+      
       this.formSprint = this.form.group({
         idProyect: [data.idProyect, [Validators.required]],
         dateStart: ['', [Validators.required]],
         dateEnd: ['', [Validators.required]],
-        number: [numberSprint],
+        number: [(this.nSprint+1)],
         dateCreation: [this.dateCreation, [Validators.required]],
       });
     });
@@ -55,8 +65,7 @@ export class CreateSprintComponent {
           let lastSprintNumber = 0; // Asumimos un número por defecto si no hay sprints
           this.sprints.forEach((element) => {
             lastSprintNumber = element.number;
-          });
-          console.log(`Numero: ${lastSprintNumber}`);
+          });        
           resolve(lastSprintNumber); // Resolver la promesa con el número del sprint
         },
         (error) => {
@@ -69,9 +78,12 @@ export class CreateSprintComponent {
   sendForm() {
     if (!this.dateStartValidator() && !this.dateEndValidator()) {
       // if (this.formSprint.valid) {
-      //let token: String = this.loginService.userToken;
+      //let token: String = this.loginService.userToken;      
+      console.log( JSON.stringify(this.formSprint.value) );
       const sendForm = this.formSprint.value;
-      this.sprintService.newSprint(sendForm).subscribe(() => {});
+      this.sprintService.newSprint(sendForm).subscribe(() => {
+    
+      });
       //}
     }
   }

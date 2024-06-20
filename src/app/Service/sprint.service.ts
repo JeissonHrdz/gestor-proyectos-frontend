@@ -19,16 +19,13 @@ export class SprintService {
   newSprint(sprint: Sprint): Observable<Sprint> {    
 
     let idProyect = 0;
-    this.idProyect.subscribe((data) => {
-      idProyect = data;
-    });
+    this.idProyect.subscribe ((data) => {
+      idProyect = data    
+    })
 
-    return this.http
-      .post<Sprint>(`${this.urlBase}/proyect/` + idProyect+`/sprint`, sprint)
+    return this.http.post<Sprint>(`${this.urlBase}/proyect/` + idProyect+`/sprint`, sprint)
       .pipe(catchError(this.handleError));
-  }
-  
-
+  } 
 
   listSprintByProyect(idProyect:number):Observable<Array<Sprint>> {
 

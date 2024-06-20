@@ -2,7 +2,7 @@
     <div>
      
 
-        <form  [formGroup]="formSprint" (ngSubmit)="sendForm()">
+        <form  *ngIf="formSprint" [formGroup]="formSprint" (ngSubmit)="sendForm()">
 
             <div class="row">
                 <div class="col-6">

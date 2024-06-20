@@ -22,9 +22,7 @@ export class ProyectsComponent {
     private sprintService = inject(SprintService);
 
     proyectDetails: boolean = false;
-
     private proyectDetailsService = inject(ProyectDetailsService)
-
     private proyectService = inject(ProyectService)
     private jwtInterceptor = inject(JwtInterceptorService);
 
