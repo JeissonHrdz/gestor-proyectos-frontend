@@ -10,7 +10,7 @@ export class ProyectDetailsService {
 
   proyect?:Proyect | any;
   public proyectDetails = new BehaviorSubject<boolean>(false);
-  public proyectInfo = new BehaviorSubject<Proyect>(this.proyect);
+  public proyectInfo = new BehaviorSubject<Proyect>(this.proyect);  
 
  
   constructor() { }

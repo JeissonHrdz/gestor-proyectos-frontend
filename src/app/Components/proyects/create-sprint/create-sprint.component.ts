@@ -32,7 +32,7 @@ export class CreateSprintComponent {
   nSprint: number = 0;
 
   ngOnInit() {
-   
+    
   }
 
   ngOnDestroy(): void {
@@ -82,7 +82,10 @@ export class CreateSprintComponent {
       console.log( JSON.stringify(this.formSprint.value) );
       const sendForm = this.formSprint.value;
       this.sprintService.newSprint(sendForm).subscribe(() => {
-    
+        this.sprintService.sprintInfo.next(false);
+        document.getElementById('btnClose')?.click()
+      
+       
       });
       //}
     }

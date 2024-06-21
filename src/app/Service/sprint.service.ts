@@ -15,6 +15,7 @@ export class SprintService {
   constructor() {}
 
   public idProyect = new BehaviorSubject<number>(0);
+  public sprintInfo = new BehaviorSubject<boolean>(false); 
 
   newSprint(sprint: Sprint): Observable<Sprint> {    
 
