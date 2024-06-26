@@ -8,6 +8,7 @@ import { LoginService } from './Service/login.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectDetailsComponent } from './Components/proyects/project-details/project-details.component';
+import { BacklogComponent } from './Components/proyects/backlog/backlog.component';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ import { ProjectDetailsComponent } from './Components/proyects/project-details/p
     FormregisterComponent,
     CommonModule,
     HttpClientModule,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    BacklogComponent
   ],
 })
 export class AppComponent {

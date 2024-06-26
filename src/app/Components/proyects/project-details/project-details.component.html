@@ -8,7 +8,11 @@
             <div class="col-sm-6 col-md-8">
                 <h3 style="font-weight: 500;" class="float-start me-4">Sprint Planing</h3>
                 <button data-bs-toggle="modal" (click)="showSprintForm()" data-bs-target="#sprintModal"
-                    class="btn btn-primary float-start p-2 poppins-light ">Create Sprint</button>
+                    class="btn btn-primary float-start p-2 poppins-light me-2 ">Create Sprint</button>
+
+                    <button data-bs-toggle="modal" data-bs-target="#backlogModal" class="btn  float-start p-2 poppins-light" 
+                    style="background-color: #794ade; color: white;" 
+                    type="button">Backlog</button>
             </div>
             <div class="col-6 col-md-4">
             </div>
@@ -18,12 +22,10 @@
     <br>
 
 </section>
-<div class="container-fluid" style="height: 78%; overflow: scroll;">
+<div class="container-fluid" style="height: 77%; overflow: scroll; overflow-x: hidden;">
     <div class="row">
-        <div class="col-3" style="height: 100%;">
-            <h6>Backlog</h6>
-
-           
+        <!-- <div class="col-3" style="height: 100%;">
+            <h6>Backlog</h6>           
                 @for (item of todo; track item) {
                 <div class="card text-bg-light mb-3 example-box" style="max-width: 18rem;">
                     <div class="card-header">{{item}}1</div>
@@ -36,8 +38,8 @@
                 </div>
                 }
            
-        </div>
-        <div class="col-9">
+        </div> -->
+        <div class="col-12">
             <div class="example-container" *ngFor="let sp of sprints">
                 <br>
                 <div class="accordion" id="accordionExample">
@@ -83,6 +85,23 @@
             </div>
             <div class="modal-body">
                 <app-create-sprint *ngIf="sprintInfo"></app-create-sprint>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--MODAL BACKLOG-->
+<div class="modal fade" id="backlogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Backlog</h1>
+                <button type="button" id="btnClose" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <app-backlog/>
             </div>
 
         </div>

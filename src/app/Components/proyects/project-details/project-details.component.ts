@@ -6,15 +6,15 @@ import { Proyect } from '../../../Model/proyect.model';
 import { ProyectDetailsService } from '../../../Service/proyect-details.service';
 import { SprintService } from '../../../Service/sprint.service';
 import { Sprint } from '../../../Model/sprint.model';
+import { BacklogComponent } from "../backlog/backlog.component";
 
-import 'jquery-ui/dist/jquery-ui.js';
 
 @Component({
-  selector: 'app-project-details',
-  standalone: true,
-  templateUrl: './project-details.component.html',
-  styleUrl: './project-details.component.css',
-  imports: [CommonModule, CreateSprintComponent],
+    selector: 'app-project-details',
+    standalone: true,
+    templateUrl: './project-details.component.html',
+    styleUrl: './project-details.component.css',
+    imports: [CommonModule, CreateSprintComponent, BacklogComponent]
 })
 export class ProjectDetailsComponent {
   showSprintForm() {
@@ -39,13 +39,10 @@ export class ProjectDetailsComponent {
     this.sprintServices.sprintInfo.subscribe((data) => {
       this.sprintInfo = data;
     });
+    
+  }
 
  
-  }
-
-  ngAfterViewInit(): void {
-   // $('#draggable1').draggable();
-  }
 
   todo = ['Get to work', 'Pick up groceries'];
 
