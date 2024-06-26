@@ -1,25 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-  CdkDrag,
-  CdkDropList,
-} from '@angular/cdk/drag-drop';
+
 import { CreateSprintComponent } from '../create-sprint/create-sprint.component';
 import { Proyect } from '../../../Model/proyect.model';
 import { ProyectDetailsService } from '../../../Service/proyect-details.service';
-import { BehaviorSubject } from 'rxjs';
 import { SprintService } from '../../../Service/sprint.service';
 import { Sprint } from '../../../Model/sprint.model';
+
+import 'jquery-ui/dist/jquery-ui.js';
 
 @Component({
   selector: 'app-project-details',
   standalone: true,
   templateUrl: './project-details.component.html',
   styleUrl: './project-details.component.css',
-  imports: [CommonModule, CdkDropList, CdkDrag, CreateSprintComponent],
+  imports: [CommonModule, CreateSprintComponent],
 })
 export class ProjectDetailsComponent {
   showSprintForm() {
@@ -44,26 +39,17 @@ export class ProjectDetailsComponent {
     this.sprintServices.sprintInfo.subscribe((data) => {
       this.sprintInfo = data;
     });
+
+ 
+  }
+
+  ngAfterViewInit(): void {
+   // $('#draggable1').draggable();
   }
 
   todo = ['Get to work', 'Pick up groceries'];
 
   done = ['Get up'];
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-  }
+
 }

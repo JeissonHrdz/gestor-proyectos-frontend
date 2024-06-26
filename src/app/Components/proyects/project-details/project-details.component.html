@@ -23,11 +23,9 @@
         <div class="col-3" style="height: 100%;">
             <h6>Backlog</h6>
 
-            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[]"
-                class="example-list" (cdkDropListDropped)="drop($event)">
+           
                 @for (item of todo; track item) {
-
-                <div class="card text-bg-light mb-3 example-box" style="max-width: 18rem;" cdkDrag>
+                <div class="card text-bg-light mb-3 example-box" style="max-width: 18rem;">
                     <div class="card-header">{{item}}1</div>
                     <div class="card-body">
                         <h6 class="card-title">Crear el login.</h6>
@@ -37,12 +35,11 @@
                     </div>
                 </div>
                 }
-            </div>
+           
         </div>
         <div class="col-9">
             <div class="example-container" *ngFor="let sp of sprints">
                 <br>
-
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -53,13 +50,9 @@
                         </h2>
                         <div id="collapseOne{{sp.number}}" class="accordion-collapse collapse show"
                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-                                    [cdkDropListConnectedTo]="[todoList]" class="example-list"
-                                    (cdkDropListDropped)="drop($event)">
+                            <div class="accordion-body">                             
                                     @for (item of done; track item) {
-
-                                    <div class="card text-bg-light mb-3 example-box" cdkDrag>
+                                    <div class="card text-bg-light mb-3 example-box" id="draggable{{sp.number}}">
                                         <div class="card-header">{{item}}1</div>
                                         <div class="card-body">
                                             <h6 class="card-title">Crear el login.</h6>
@@ -69,7 +62,7 @@
                                         </div>
                                     </div>
                                     }
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
