@@ -1,57 +1,90 @@
 <section class="container-fluid">
     <div class="container">
         <h5>Add Task</h5>
-        <div class="row">
-            <div class="col-5">
-                <label for="taskName" class="form-label">Task Name</label>
-            </div>
-            <div class="col-5">
-                <label for="taskDescription" class="form-label">Description</label>
-            </div>
-            <div class="col-2">
+        <br>
 
+        <div class="container rounded p-3 shadow pb-4">
+            <div class="row">
+
+                <div class="col-3">
+                    <label for="taskName" class="form-label">Name</label>
+                </div>
+                <div class="col-4">
+                    <label for="taskDescription" class="form-label">Description</label>
+                </div>
+                <div class="col-3">
+                    <label for="sprint" class="form-label">Sprint</label>
+                </div>
+                <div class="col-2">
+
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-5">
-                <input type="text" class="form-control" name="taskName" id="taskName">
-            </div>
-            <div class="col-5">
-                <input type="text" class="form-control" name="taskDescription" id="taskDescription">
-            </div>
-            <div class="col-2">
-                <button type="submit" class="btn btn-primary">Add</button>
+            <div class="row">
+                <div class="col-3">
+                    <input type="text" class="form-control" name="taskName" id="taskName">
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control" name="taskDescription" id="taskDescription">
+                </div>
+                <div class="col-3">
+                    <select name="sprint" id="sprint" class="form-select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
             </div>
         </div>
     </div>
-    <br>
+    <br><br>
     <div class="container">
-        <h5>Backlog</h5>
         <div class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Decription</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Date Created</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Login Create</td>
-                        <td>Creation of a login with all componentes and a form register for new users</td>
-                        <td>mdo</td>
-                        <td>12/01/2024 </td>
-                        <td><span class="badge text-bg-secondary">Not Started</span></td>
-                        <th><select class="form-select"><option>Mark</option></select></th>
-                    </tr>
-                
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-4">
+                    <div class="container rounded p-3 shadow" style="border-top: .25rem solid #adadad;">
+                        <h5>TO-DO</h5>
+                    </div>
+                    <br>
+                    <div class="container rounded p-3 shadow" style="border-left: .25rem solid #ed638f;">
+                        <h6>Create Login for the app</h6>
+                        <br>
+                        <p class="fs-6 m-0"> Assigned To:  
+                            <span class="m-0 p-1" style="height: 30px;
+                            width: 30px;
+                            background-color: #636fed;
+                            color: aliceblue;
+                            border-radius: 25px / 25px;
+                            display: inline-block;">JH</span>
+                        </p>
+                        <hr class="mt-1 mb-1">
+                    </div>
+                    <br>
+
+                </div>
+                <div class="col-4">
+                    <div class="container rounded p-3 shadow" style="border-top: .25rem solid #636fed;">
+                        <h5>In Progress</h5>
+                    </div>
+                    <br>
+                    <div class="container rounded p-3 shadow" style="border-left: .25rem solid #ed9f63;">
+                        <h6>Create Login for the app</h6>
+                        <br>
+                        <p class="fs-6 m-0"> Assigned To: Jeisson Hernandez </p>
+                        <hr class="mt-1 mb-1">
+                    </div>
+                    <br>
+
+                </div>
+                <div class="col-4">
+                    <div class="container rounded p-3 shadow" style="border-top: .25rem solid #63edaf;">
+                        <h5>Done</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
