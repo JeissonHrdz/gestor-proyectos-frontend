@@ -1,3 +1,22 @@
 hr{
    color: rgb(166, 166, 166);
 }
+
+th , td{
+   padding: .9rem;
+}
+
+.circle {
+   width: 25px;
+   height: 25px;
+   background-color: #4c89af;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.initials {
+   font-size: .9rem;
+   color: white;   
+}

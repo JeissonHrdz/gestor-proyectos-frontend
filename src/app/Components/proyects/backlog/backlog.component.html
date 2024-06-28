@@ -1,91 +1,68 @@
 <section class="container-fluid">
     <div class="container">
-        <h5>Add Task</h5>
+        <h4 class="float-start">Backlog</h4>
+        <button type="submit" class="btn btn-primary float-end" data-bs-target="#taskModal" data-bs-toggle="modal" >+ Create Task</button>
         <br>
-
-        <div class="container rounded p-3 shadow pb-4">
-            <div class="row">
-
-                <div class="col-3">
-                    <label for="taskName" class="form-label">Name</label>
-                </div>
-                <div class="col-4">
-                    <label for="taskDescription" class="form-label">Description</label>
-                </div>
-                <div class="col-3">
-                    <label for="sprint" class="form-label">Sprint</label>
-                </div>
-                <div class="col-2">
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <input type="text" class="form-control" name="taskName" id="taskName">
-                </div>
-                <div class="col-4">
-                    <input type="text" class="form-control" name="taskDescription" id="taskDescription">
-                </div>
-                <div class="col-3">
-                    <select name="sprint" id="sprint" class="form-select">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-
-                </div>
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </div>
-        </div>
+        <br>
+        <br>
     </div>
-    <br><br>
-    <div class="container">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <div class="container rounded p-3 shadow" style="border-top: .25rem solid #adadad;">
-                        <h5>TO-DO</h5>
-                    </div>
-                    <br>
-                    <div class="container rounded p-3 shadow" style="border-left: .25rem solid #ed638f;">
-                        <h6>Create Login for the app</h6>
-                        <br>
-                        <p class="fs-6 m-0"> Assigned To:  
-                            <span class="m-0 p-1" style="height: 30px;
-                            width: 30px;
-                            background-color: #636fed;
-                            color: aliceblue;
-                            border-radius: 25px / 25px;
-                            display: inline-block;">JH</span>
-                        </p>
-                        <hr class="mt-1 mb-1">
-                    </div>
-                    <br>
+    <div class="container  p-4 fs-6 text" style="background-color: white;">
+        <table class="table">
+            <thead>
+                <tr style="border-color: white; margin-bottom: .5rem;">
+                    <th scope="col">Priority</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Members</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody style="font-size: .9rem;">
+                <tr>
+                    <th scope="row"> <span class="badge text-bg-danger p-2 poppins-light">High</span></th>
+                    <td>
+                        <p class="text-black-50 m-0"><i class="bi bi-journal-check"></i>
+                            Create Login and Register</p>
+                    </td>
+                    <td>
+                        <div class="circle"><span class="initials">AB</span></div>
+                    </td>
+                    <td>
+                        <p class="text-warning poppins-medium m-0 "> In Progress</p>
+                    </td>
+                    <td>28-06-2024</td>
+                </tr>
 
-                </div>
-                <div class="col-4">
-                    <div class="container rounded p-3 shadow" style="border-top: .25rem solid #636fed;">
-                        <h5>In Progress</h5>
-                    </div>
-                    <br>
-                    <div class="container rounded p-3 shadow" style="border-left: .25rem solid #ed9f63;">
-                        <h6>Create Login for the app</h6>
-                        <br>
-                        <p class="fs-6 m-0"> Assigned To: Jeisson Hernandez </p>
-                        <hr class="mt-1 mb-1">
-                    </div>
-                    <br>
-
-                </div>
-                <div class="col-4">
-                    <div class="container rounded p-3 shadow" style="border-top: .25rem solid #63edaf;">
-                        <h5>Done</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <tr>
+                    <th scope="row"> <span class="badge text-bg-danger p-2 poppins-light">High</span></th>
+                    <td>
+                        <p class="text-black-50 m-0"><i class="bi bi-journal-check"></i>
+                            Create Login and Register</p>
+                    </td>
+                    <td>
+                        <div class="circle"><span class="initials">AB</span></div>
+                    </td>
+                    <td>
+                        <p class="text-warning poppins-medium m-0 "> In Progress</p>
+                    </td>
+                    <td>28-06-2024</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
 </section>
+
+<div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"> Add Task</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-task></app-add-task>
+        </div>
+  
+      </div>
+    </div>
+  </div>
