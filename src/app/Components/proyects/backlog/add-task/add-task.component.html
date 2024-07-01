@@ -1,23 +1,28 @@
 <section class="container-fluid">
     <div class="container">
-        <form action="">
+        <form  [formGroup]="formTask" (ngSubmit)="addTask()">
             <div class="row">
 
                 <div class="col-12 mt-3">
                     <label for="taskName" class="form-label poppins-medium">Name</label>
-                    <input type="text" class="form-control" name="taskName" id="taskName">
+                    <input type="text" class="form-control" name="taskName" id="taskName"
+                     [ngClass]="{'is-invalid': hasErrors('name','required')}"  formControlName="name"> 
                 </div>
 
                 <div class="col-12  mt-3">
                     <label for="taskDescription" class="form-label poppins-medium">Description</label>
-                    <input type="text" class="form-control" name="taskDescription" id="taskDescription">
+                    <input type="text" class="form-control" name="taskDescription" id="taskDescription"
+                    [ngClass]="{'is-invalid': hasErrors('description','required')}" formControlName="description"
+                    >
                 </div>
 
                 <div class="col-12  mt-3">
                     <div class="row">
                         <div class="col-6">
                             <label for="sprint" class="form-label poppins-medium">Asign to Sprint</label>
-                            <select name="sprint" id="sprint" class="form-select">
+                            <select name="sprint" id="sprint" class="form-select" 
+                            [ngClass]="{'is-invalid': hasErrors('sprint','required')}" formControlName="idSprint"
+                            >
                                 <option value="0" disabled selected>Chose a Sprint</option>
                                 <option value="1">Sprint 1</option>
                                 <option value="2">Sprint 2</option>
@@ -26,11 +31,14 @@
                         </div>
                         <div class="col-6">
                             <label for="priority" class="form-label poppins-medium">Priority</label>
-                            <select name="priority" id="priority" class="form-select">
+                            <select name="priority" id="priority" class="form-select"
+                            [ngClass]="{'is-invalid': hasErrors('Priority','required')}"
+                            formControlName="priority"
+                            >
                                 <option value="0" disabled selected>Chose a Priority</option>
-                                <option value="1">Low</option>
-                                <option value="2">Medium</option>
-                                <option value="3">High</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
                             </select>
                         </div>
                     </div>
