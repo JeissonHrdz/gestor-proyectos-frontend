@@ -21,12 +21,11 @@
                         <div class="col-6">
                             <label for="sprint" class="form-label poppins-medium">Asign to Sprint</label>
                             <select name="sprint" id="sprint" class="form-select" 
-                            [ngClass]="{'is-invalid': hasErrors('sprint','required')}" formControlName="idSprint"
-                            >
+                            [ngClass]="{'is-invalid': hasErrors('sprint','required')}" formControlName="idSprint">
                                 <option value="0" disabled selected>Chose a Sprint</option>
-                                <option value="1">Sprint 1</option>
-                                <option value="2">Sprint 2</option>
-                                <option value="3">Sprint 3</option>
+                                @for (item of sprints; track $index) {
+                                    <option value="{{item.idSprint}}">Sprint {{item.number}}</option>
+                                }                   
                             </select>
                         </div>
                         <div class="col-6">
@@ -47,6 +46,7 @@
                 <div class="col-12 mt-3">
                 <label for="taskUser" class="form-label poppins-medium">Add User</label>
                 <input type="text" class="form-control" name="taskUser" id="taskUser">
+            
                 </div>
                 <div class="col-12 mt-3" style="display: grid;">
                     <button type="submit" class="btn btn-primary p-2 poppins-light ">Add</button>

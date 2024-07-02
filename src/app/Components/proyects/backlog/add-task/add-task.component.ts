@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskService } from '../../../../Service/task.service';
 import { CommonModule } from '@angular/common';
+import { ProyectDetailsService } from '../../../../Service/proyect-details.service';
+import { SprintService } from '../../../../Service/sprint.service';
+import { Proyect } from '../../../../Model/proyect.model';
+import { Sprint } from '../../../../Model/sprint.model';
 
 @Component({
   selector: 'app-add-task',
@@ -14,8 +18,25 @@ export class AddTaskComponent {
   formTask?: FormGroup | any;
   private objectDate: Date = new Date(); 
   private taskService = inject(TaskService);
-  private dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
+  dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
+  private proyectDetailsService = inject(ProyectDetailsService);
+  private sprintServices = inject(SprintService);
+  proyect?: Proyect;
+  sprints: Array<Sprint> = [];
+  idProyect: number = 0;
 
+  ngOnInit(){
+    this.proyectDetailsService.proyectInfo.subscribe((data) => {
+      this.proyect = data; 
+      this.idProyect = data.idProyect;    
+      this.sprintServices
+        .listSprintByProyect(data.idProyect)
+        .subscribe((data: Array<Sprint>) => {
+          this.sprints = data;
+        });
+    });
+
+  }
   constructor(private form: FormBuilder) {
     this.formTask = this.form.group({
       name: ['', [Validators.required]],
@@ -28,13 +49,22 @@ export class AddTaskComponent {
   }
 
   addTask() {
-    if (this.formTask.valid) {
-   
+    if (this.formTask.valid) {   
       const sendForm = this.formTask.value;
-      this.taskService.newTask(sendForm).subscribe(() => {});
+      this.taskService.newTask(sendForm, this.idProyect).subscribe(() => {
+        this.resetInputs();
+      });
   } else {
-    alert("error al ingresar los datos")
+    console.log(JSON.stringify(this.formTask.value));
+   console.error("error al ingresar los datos")
   }
+}
+
+resetInputs(){
+  let controlNames = ['name','description','priority','idSprint'];
+  controlNames.forEach((controlName) => {
+    this.formTask?.controls[controlName].reset();
+  }) 
 }
 
 hasErrors(controlName: string, errorType: string) {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, Input, signal } from '@angular/core';
 
 import { CreateSprintComponent } from '../create-sprint/create-sprint.component';
 import { Proyect } from '../../../Model/proyect.model';
@@ -25,10 +25,11 @@ export class ProjectDetailsComponent {
   private sprintServices = inject(SprintService);
   sprintInfo: boolean = false;
   sprints: Array<Sprint> = [];
+  
 
   ngOnInit() {
     this.proyectDetailsService.proyectInfo.subscribe((data) => {
-      this.proyect = data;
+      this.proyect = data;     
       this.sprintServices
         .listSprintByProyect(data.idProyect)
         .subscribe((data: Array<Sprint>) => {

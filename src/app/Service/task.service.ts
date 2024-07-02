@@ -15,12 +15,8 @@ export class TaskService {
   
   constructor() {}
 
-  newTask(task: Task): Observable<Task> {  
+  newTask(task: Task,idProyect: number): Observable<Task> {     
 
-    let idProyect = 0;
-    this.sprintService.idProyect.subscribe((data) => {
-      idProyect = data;
-    }); 
     console.log(JSON.stringify(task));
     return this.http
       .post<Task>(
