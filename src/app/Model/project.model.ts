@@ -1,5 +1,5 @@
-export interface Proyect{
-    idProyect:number;
+export interface Project{
+    idProject:number;
     name:string;
     dateStart:string
     dateEnd:string

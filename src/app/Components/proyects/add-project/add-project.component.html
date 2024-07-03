@@ -1,11 +1,11 @@
 <section class="container-fluid p-4">
     <div>
-        <form  [formGroup]="formProyect" (ngSubmit)="sendForm()"> 
+        <form  [formGroup]="formProject" (ngSubmit)="sendForm()"> 
             <div class="row">
                 <div class="col-12">
-                    <label for="proyectName" class="form-label">Proyect Name</label>
+                    <label for="projectName" class="form-label">Project Name</label>
                     <input type="text" [ngClass]="{'is-invalid': hasErrors('name','required')}" 
-                    class="form-control" id="proyectName" aria-describedby="ProyectName"  
+                    class="form-control" id="projectName" aria-describedby="ProjectName"  
                     formControlName="name">
                 </div>
            
@@ -13,9 +13,9 @@
             <br> 
             <div class="row">
                 <div class="col-6">
-                    <label for="proyectStart" class="form-label">Date Start</label>
+                    <label for="projectStart" class="form-label">Date Start</label>
                     <input type="date" [ngClass]="{'is-invalid': hasErrors('dateStart','required')}" 
-                    class="form-control" id="proyectStart" aria-describedby="ProyectStart" 
+                    class="form-control" id="projectStart" aria-describedby="ProjectStart" 
                     formControlName="dateStart">
                     <br>
                     <span class="badge text-bg-danger p-2 poppins-light"
@@ -26,9 +26,9 @@
                 </div>
                
                 <div class="col-6">
-                    <label for="proyectEnd" class="form-label">Date End</label>
+                    <label for="projectEnd" class="form-label">Date End</label>
                     <input type="date" [ngClass]="{'is-invalid': hasErrors('dateEnd','required')}" 
-                    class="form-control" id="proyectEnd" aria-describedby="ProyectEnd"  
+                    class="form-control" id="projectEnd" aria-describedby="ProjectEnd"  
                     formControlName="dateEnd">
                     <br>
                     <span class="badge text-bg-danger p-2 poppins-light"

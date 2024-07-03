@@ -14,23 +14,23 @@ export class SprintService {
 
   constructor() {}
 
-  public idProyect = new BehaviorSubject<number>(0);
+  public idProject = new BehaviorSubject<number>(0);
   public sprintInfo = new BehaviorSubject<boolean>(false); 
 
   newSprint(sprint: Sprint): Observable<Sprint> {    
 
-    let idProyect = 0;
-    this.idProyect.subscribe ((data) => {
-      idProyect = data    
+    let idProject = 0;
+    this.idProject.subscribe ((data) => {
+      idProject = data    
     })
 
-    return this.http.post<Sprint>(`${this.urlBase}/proyect/` + idProyect+`/sprint`, sprint)
+    return this.http.post<Sprint>(`${this.urlBase}/project/` + idProject+`/sprint`, sprint)
       .pipe(catchError(this.handleError));
   } 
 
-  listSprintByProyect(idProyect:number):Observable<Array<Sprint>> {
+  listSprintByProject(idProject:number):Observable<Array<Sprint>> {
 
-    return this.http.get<Array<Sprint>>(`${this.urlBase}/proyect/${idProyect}/sprints`).pipe(
+    return this.http.get<Array<Sprint>>(`${this.urlBase}/project/${idProject}/sprints`).pipe(
       catchError(this.handleError));
   }
 

@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskService } from '../../../../Service/task.service';
 import { CommonModule } from '@angular/common';
-import { ProyectDetailsService } from '../../../../Service/proyect-details.service';
+import { ProjectDetailsService } from '../../../../Service/project-details.service';
 import { SprintService } from '../../../../Service/sprint.service';
-import { Proyect } from '../../../../Model/proyect.model';
+import { Project } from '../../../../Model/project.model';
 import { Sprint } from '../../../../Model/sprint.model';
+import { Subject, switchMap, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',
@@ -19,24 +20,32 @@ export class AddTaskComponent {
   private objectDate: Date = new Date(); 
   private taskService = inject(TaskService);
   dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
-  private proyectDetailsService = inject(ProyectDetailsService);
+  private projectDetailsService = inject(ProjectDetailsService);
   private sprintServices = inject(SprintService);
-  proyect?: Proyect;
+  project?: Project;
   sprints: Array<Sprint> = [];
-  idProyect: number = 0;
+  idProject: number = 0;
+  private unsubscribe$ = new Subject<void>();
 
   ngOnInit(){
-    this.proyectDetailsService.proyectInfo.subscribe((data) => {
-      this.proyect = data; 
-      this.idProyect = data.idProyect;    
-      this.sprintServices
-        .listSprintByProyect(data.idProyect)
-        .subscribe((data: Array<Sprint>) => {
-          this.sprints = data;
-        });
-    });
 
+    this.projectDetailsService.projectInfo.pipe(
+      takeUntil(this.unsubscribe$),
+      switchMap((data: Project)  => {
+          this.project = data;
+          this.idProject = data.idProject;
+          return this.sprintServices.listSprintByProject(data.idProject);
+      })
+    ).subscribe((data: Array<Sprint>) => {
+      this.sprints = data;
+    })
   }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   constructor(private form: FormBuilder) {
     this.formTask = this.form.group({
       name: ['', [Validators.required]],
@@ -51,7 +60,7 @@ export class AddTaskComponent {
   addTask() {
     if (this.formTask.valid) {   
       const sendForm = this.formTask.value;
-      this.taskService.newTask(sendForm, this.idProyect).subscribe(() => {
+      this.taskService.newTask(sendForm, this.idProject).subscribe(() => {
         this.resetInputs();
       });
   } else {

@@ -7,21 +7,21 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ProyectService } from '../../../Service/proyect.service';
+import { ProjectService } from '../../../Service/project.service';
 import { JwtInterceptorService } from '../../../Service/jwt-interceptor.service';
 import { LoginService } from '../../../Service/login.service';
 
 @Component({
-  selector: 'app-add-proyect',
+  selector: 'app-add-project',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
-  templateUrl: './add-proyect.component.html',
-  styleUrl: './add-proyect.component.css',
+  templateUrl: './add-project.component.html',
+  styleUrl: './add-project.component.css',
 })
-export class AddProyectComponent {
-  formProyect?: FormGroup | any;
+export class AddProjectComponent {
+  formProject?: FormGroup | any;
 
-  private proyectService = inject(ProyectService);
+  private projectService = inject(ProjectService);
   private jwtInterceptor = inject(JwtInterceptorService);
   private objectDate: Date = new Date();
   private dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
@@ -29,7 +29,7 @@ export class AddProyectComponent {
 
 
   constructor(private form: FormBuilder) {
-    this.formProyect = this.form.group({
+    this.formProject = this.form.group({
       name: ['', [Validators.required]],
       dateStart: ['', [Validators.required]],
       dateEnd: ['', [Validators.required]],
@@ -43,31 +43,31 @@ export class AddProyectComponent {
 
   sendForm() {
     if (!this.dateStartValidator() && !this.dateEndValidator()) {
-      if (this.formProyect.valid) {
+      if (this.formProject.valid) {
         let token: String = this.loginService.userToken;
-        const sendForm = this.formProyect.value;
-        this.proyectService.newProyect(sendForm).subscribe(() => {});
+        const sendForm = this.formProject.value;
+        this.projectService.newProject(sendForm).subscribe(() => {});
       }
     }
   }
 
   dateStartValidator() {
-    let dateStartValidate: Date = new Date(this.formProyect.value.dateStart);
+    let dateStartValidate: Date = new Date(this.formProject.value.dateStart);
     let dateToday: Date = new Date();
     return (dateStartValidate.getTime() < dateToday.getTime())    
   }
 
   dateEndValidator() {
-    let dateStartValidate: Date = new Date(this.formProyect.value.dateStart);
-    let dateEndValidate: Date = new Date(this.formProyect.value.dateEnd);
+    let dateStartValidate: Date = new Date(this.formProject.value.dateStart);
+    let dateEndValidate: Date = new Date(this.formProject.value.dateEnd);
     return ( dateEndValidate.getTime() < dateStartValidate.getTime())
     
   }
 
   hasErrors(controlName: string, errorType: string) {
     return (
-      this.formProyect.get(controlName)?.hasError(errorType) &&
-      this.formProyect.get(controlName)?.touched
+      this.formProject.get(controlName)?.hasError(errorType) &&
+      this.formProject.get(controlName)?.touched
     );
   }
 }

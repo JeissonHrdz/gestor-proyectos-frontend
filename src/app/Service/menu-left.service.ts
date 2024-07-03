@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MenuLeftService {
 
-  public loadPageProyects = new BehaviorSubject<boolean>(false);
+  public loadPageProjects = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 }

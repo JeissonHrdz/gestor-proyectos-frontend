@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { MenuLeftComponent } from "../menu-left/menu-left.component";
-import { ProyectsComponent } from "../proyects/proyects.component";
+import { ProjectsComponent } from "../proyects/projects.component";
 import { CommonModule } from '@angular/common';
 import { MenuLeftService } from '../../Service/menu-left.service';
 
@@ -10,17 +10,17 @@ import { MenuLeftService } from '../../Service/menu-left.service';
     standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.css',
-    imports: [NavbarComponent, MenuLeftComponent, ProyectsComponent, CommonModule]
+    imports: [NavbarComponent, MenuLeftComponent, ProjectsComponent, CommonModule]
 })
 export class DashboardComponent {
 
     private menuLeftService = inject(MenuLeftService)
-    loadProyects?: boolean;
+    loadProjects?: boolean;
     constructor() { }
 
     ngOnInit() {
-        this.menuLeftService.loadPageProyects.subscribe(data => {
-            this.loadProyects = data;
+        this.menuLeftService.loadPageProjects.subscribe(data => {
+            this.loadProjects = data;
         });
     }
 

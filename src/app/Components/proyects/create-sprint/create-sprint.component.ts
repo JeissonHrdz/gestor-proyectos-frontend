@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { SprintService } from '../../../Service/sprint.service';
-import { ProyectDetailsService } from '../../../Service/proyect-details.service';
-import { Proyect } from '../../../Model/proyect.model';
+import { ProjectDetailsService } from '../../../Service/project-details.service';
+import { Project } from '../../../Model/project.model';
 import {
   FormBuilder,
   FormControl,
@@ -24,10 +24,10 @@ export class CreateSprintComponent {
   formSprint?: FormGroup | any;
 
   private sprintService = inject(SprintService);
-  private proyectDetailsService = inject(ProyectDetailsService);
+  private projectDetailsService = inject(ProjectDetailsService);
   private objectDate: Date = new Date();
   private dateCreation: string = `${this.objectDate.getFullYear()}-0${this.objectDate.getMonth()}-0${this.objectDate.getDay()}`;
-  // proyect?: Proyect | any;
+  
   sprints: Array<Sprint> = [];
   nSprint: number = 0;
 
@@ -40,14 +40,14 @@ export class CreateSprintComponent {
   }
 
   constructor(private form: FormBuilder) {
-    this.proyectDetailsService.proyectInfo.subscribe(async (data) => {
-      this.sprintService.idProyect.next(data.idProyect);
-      let numberSprint =  await this.searchSprintNumber(data.idProyect).then((data) => {
+    this.projectDetailsService.projectInfo.subscribe(async (data) => {
+      this.sprintService.idProject.next(data.idProject);
+      let numberSprint =  await this.searchSprintNumber(data.idProject).then((data) => {
         this.nSprint = data
       })
       
       this.formSprint = this.form.group({
-        idProyect: [data.idProyect, [Validators.required]],
+        idProject: [data.idProject, [Validators.required]],
         dateStart: ['', [Validators.required]],
         dateEnd: ['', [Validators.required]],
         number: [(this.nSprint+1)],
@@ -56,10 +56,10 @@ export class CreateSprintComponent {
     });
   }
 
-  async searchSprintNumber(idProyect: number): Promise<number> {
+  async searchSprintNumber(idProject: number): Promise<number> {
     // Cambiado a async
     return new Promise((resolve, reject) => {
-      this.sprintService.listSprintByProyect(idProyect).subscribe(
+      this.sprintService.listSprintByProject(idProject).subscribe(
         (data: Array<Sprint>) => {
           this.sprints = data;
           let lastSprintNumber = 0; // Asumimos un número por defecto si no hay sprints

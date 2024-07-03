@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, NgModule } from '@angular/core';
-import { Proyect } from '../Model/proyect.model';
+import { Project } from '../Model/project.model';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProyectService {
+export class ProjectService {
 
   private http = inject(HttpClient); 
   
@@ -17,15 +17,15 @@ export class ProyectService {
 
   constructor() {}
 
-  newProyect(proyect:Proyect):Observable<Proyect> {
+  newProject(project:Project):Observable<Project> {
 
-    return this.http.post<Proyect>(`${this.urlBase}/proyect`, proyect).pipe(
+    return this.http.post<Project>(`${this.urlBase}/project`, project).pipe(
       catchError(this.handleError))
   }
 
-  showProyectByUser(idUser:number):Observable<Array<Proyect>> {
+  showProjectByUser(idUser:number):Observable<Array<Project>> {
 
-    return this.http.get<Array<Proyect>>(`${this.urlBase}/proyects/${idUser}`).pipe(
+    return this.http.get<Array<Project>>(`${this.urlBase}/projects/${idUser}`).pipe(
       catchError(this.handleError));
   }
 

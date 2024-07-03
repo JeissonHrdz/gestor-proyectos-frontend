@@ -15,12 +15,12 @@ export class TaskService {
   
   constructor() {}
 
-  newTask(task: Task,idProyect: number): Observable<Task> {     
+  newTask(task: Task,idProject: number): Observable<Task> {     
 
     console.log(JSON.stringify(task));
     return this.http
       .post<Task>(
-        `${this.urlBase}/proyect/${idProyect}/sprints/task`,
+        `${this.urlBase}/project/${idProject}/sprints/task`,
         task
       )
       .pipe(catchError(this.handleError));
