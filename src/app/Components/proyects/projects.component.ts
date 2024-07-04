@@ -38,13 +38,14 @@ export class ProjectsComponent {
         this.projectService.showProjectByUser(parseInt(this.jwtInterceptor.getIdFromToken()))
         .subscribe((data:Array<Project>) =>{          
              this.projects = data
+             console.log("idProject",this.projects[0].idProject)
             })
     } 
 
     getProjectDetails(idProject:number) {
         this.projectDetailsService.projectDetails.next(true);       
         this.projects?.forEach(element => {
-            if(element.idProject === idProject){
+            if(element.idProject === idProject){              
                 this.projectDetailsService.projectInfo.next(element);
             }
         });      

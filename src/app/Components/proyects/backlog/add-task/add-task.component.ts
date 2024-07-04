@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskService } from '../../../../Service/task.service';
 import { CommonModule } from '@angular/common';
 import { ProjectDetailsService } from '../../../../Service/project-details.service';
@@ -11,7 +11,7 @@ import { Subject, switchMap, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule, FormsModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 })
@@ -24,20 +24,19 @@ export class AddTaskComponent {
   private sprintServices = inject(SprintService);
   project?: Project;
   sprints: Array<Sprint> = [];
-  idProject: number = 0;
+  projectId: number = 0;
   private unsubscribe$ = new Subject<void>();
 
   ngOnInit(){
-
     this.projectDetailsService.projectInfo.pipe(
       takeUntil(this.unsubscribe$),
       switchMap((data: Project)  => {
           this.project = data;
-          this.idProject = data.idProject;
+          this.projectId = data.idProject;
           return this.sprintServices.listSprintByProject(data.idProject);
       })
     ).subscribe((data: Array<Sprint>) => {
-      this.sprints = data;
+      this.sprints = data;     
     })
   }
 
@@ -54,17 +53,19 @@ export class AddTaskComponent {
       idSprint: ['', [Validators.required]],
       status: ['Not started', [Validators.required]],
       dateCreation: [this.dateCreation, [Validators.required]],
+      idProject: ['']
     })
+
+    console.log("this.idProject",this.projectId)
   }
 
   addTask() {
     if (this.formTask.valid) {   
       const sendForm = this.formTask.value;
-      this.taskService.newTask(sendForm, this.idProject).subscribe(() => {
+      this.taskService.newTask(sendForm, this.projectId).subscribe(() => {       
         this.resetInputs();
       });
-  } else {
-    console.log(JSON.stringify(this.formTask.value));
+  } else {  
    console.error("error al ingresar los datos")
   }
 }

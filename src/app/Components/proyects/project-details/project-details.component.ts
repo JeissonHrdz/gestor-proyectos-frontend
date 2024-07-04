@@ -34,7 +34,8 @@ export class ProjectDetailsComponent {
     this.projectDetailsService.projectInfo.pipe(
       takeUntil(this.unsubscribe$),
       switchMap((data: Project)  => {
-          this.project = data;      
+          this.project = data;  
+          console.info(data.dateCreation);    
           return this.sprintServices.listSprintByProject(data.idProject);
       })
     ).subscribe((data: Array<Sprint>) => {

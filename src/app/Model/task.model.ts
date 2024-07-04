@@ -7,4 +7,5 @@ export interface Task {
     status: string;
     dateCreation: string;
     idSprint: number;
+    idProject: number;
 }
