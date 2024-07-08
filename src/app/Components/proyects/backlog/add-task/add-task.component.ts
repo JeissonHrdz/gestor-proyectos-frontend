@@ -62,6 +62,7 @@ export class AddTaskComponent {
   addTask() {
     if (this.formTask.valid) {   
       const sendForm = this.formTask.value;
+      sendForm.idProject = this.projectId;
       this.taskService.newTask(sendForm, this.projectId).subscribe(() => {       
         this.resetInputs();
       });

@@ -6,6 +6,16 @@
         <br>
         <br>
     </div>
+    <div class="dropdown">
+        <p class="dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+     asdasd
+        </p>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
     <div class="container  p-4 fs-6 text" style="background-color: white;">
         <table class="table">
             <thead>
@@ -18,43 +28,55 @@
                     <th scope="col">Date</th>
                 </tr>
             </thead>
+            @for (item of tasks; track $index) {
             <tbody style="font-size: .9rem;">
                 <tr>
-                    <th scope="row"> <span class="badge text-bg-danger p-2 poppins-light">High</span></th>
-                    <td>
-                        <p class="text-black-50 m-0"><i class="bi bi-journal-check"></i>
-                            Create Login and Register</p>
-                    </td>
-                    <td>
-                        <div class="circle"><span class="initials">AB</span></div>
-                    </td>
-                    <td>    
-                        Sprint 1
-                    </td>
-                    <td>
-                        <p class="text-warning poppins-medium m-0 "> In Progress</p>
-                    </td>
-                    <td>28-06-2024</td>
-                </tr>
+                    <th scope="row"> 
+                        @if (item.priority === "High") {
+                            <span class="badge text-bg-danger p-2 poppins-light">
+                                {{item.priority}}
+                            </span>
+                        } 
+                        @else if (item.priority === "Medium") {
+                            <span class="badge text-bg-warning p-2 poppins-light">
+                                {{item.priority}}
+                            </span>
+                        }
+                        @else if (item.priority === "Low") {
+                            <span class="badge text-bg-primary p-2 poppins-light">
+                                {{item.priority}}
+                            </span>
+                        }
 
-                <tr>
-                    <th scope="row"> <span class="badge text-bg-danger p-2 poppins-light">High</span></th>
+                     </th>
                     <td>
                         <p class="text-black-50 m-0"><i class="bi bi-journal-check"></i>
-                            Create Login and Register</p>
+                            {{item.name}}</p>
                     </td>
                     <td>
                         <div class="circle"><span class="initials">AB</span></div>
                     </td>
                     <td>    
-                        Sprint 1
+                        {{item.idSprint}}
                     </td>
                     <td>
-                        <p class="text-warning poppins-medium m-0 "> In Progress</p>
+                        <div class="dropdown" style="cursor: pointer;">
+                            <p class="dropdown-toggle user-select-none"  data-bs-toggle="dropdown" aria-expanded="false">
+                              {{item.status}}
+                            </p>
+                            <ul class="dropdown-menu">
+                              <li class="dropdown-item" >Not Started</li>
+                              <li class="dropdown-item" >In Progress</li>
+                              <li class="dropdown-item" >Done</li>
+                            </ul>
+                          </div>
+
+                    
                     </td>
-                    <td>28-06-2024</td>
-                </tr>
+                    <td>{{item.dateCreation}}</td>
+                </tr>            
             </tbody>
+        }
         </table>
     </div>
 </section>

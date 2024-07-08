@@ -26,6 +26,12 @@ export class TaskService {
       .pipe(catchError(this.handleError));
   }
 
+  listAllByProject(idProject:number):Observable<Array<Task>> {
+
+    return this.http.get<Array<Task>>(`${this.urlBase}/project/${idProject}/sprints/taskss`).pipe(
+      catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('Se ha producio un error ', error.error);
