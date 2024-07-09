@@ -30,7 +30,6 @@ export class ProjectDetailsComponent {
   
 
   ngOnInit() {
-
     this.projectDetailsService.projectInfo.pipe(
       takeUntil(this.unsubscribe$),
       switchMap((data: Project)  => {
@@ -54,8 +53,13 @@ export class ProjectDetailsComponent {
 
     this.sprintServices.sprintInfo.subscribe((data) => {
       this.sprintInfo = data;
-    });
+    });   
     
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
  

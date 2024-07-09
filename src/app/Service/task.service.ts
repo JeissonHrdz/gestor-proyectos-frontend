@@ -32,6 +32,12 @@ export class TaskService {
       catchError(this.handleError));
   }
 
+  // updateStatusTask(idTask: number,status: string):Observable<any> {
+
+  //   return this.http.get<Array<Task>>(`${this.urlBase}/project/${idProject}/sprints/tasks/${idTask}`,).pipe(
+  //     catchError(this.handleError));
+  // }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('Se ha producio un error ', error.error);

@@ -1,21 +1,12 @@
 <section class="container-fluid">
     <div class="container">
         <h4 class="float-start">Backlog</h4>
-        <button type="submit" class="btn btn-primary float-end" data-bs-target="#taskModal" data-bs-toggle="modal" >+ Create Task</button>
+        <button type="submit" class="btn btn-primary float-end" data-bs-target="#taskModal" data-bs-toggle="modal">+
+            Create Task</button>
         <br>
         <br>
         <br>
     </div>
-    <div class="dropdown">
-        <p class="dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
-     asdasd
-        </p>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
     <div class="container  p-4 fs-6 text" style="background-color: white;">
         <table class="table">
             <thead>
@@ -31,24 +22,24 @@
             @for (item of tasks; track $index) {
             <tbody style="font-size: .9rem;">
                 <tr>
-                    <th scope="row"> 
+                    <th scope="row">
                         @if (item.priority === "High") {
-                            <span class="badge text-bg-danger p-2 poppins-light">
-                                {{item.priority}}
-                            </span>
-                        } 
+                        <span class="badge text-bg-danger p-2 poppins-light">
+                            {{item.priority}}
+                        </span>
+                        }
                         @else if (item.priority === "Medium") {
-                            <span class="badge text-bg-warning p-2 poppins-light">
-                                {{item.priority}}
-                            </span>
+                        <span class="badge text-bg-warning p-2 poppins-light">
+                            {{item.priority}}
+                        </span>
                         }
                         @else if (item.priority === "Low") {
-                            <span class="badge text-bg-primary p-2 poppins-light">
-                                {{item.priority}}
-                            </span>
+                        <span class="badge text-bg-primary p-2 poppins-light">
+                            {{item.priority}}
+                        </span>
                         }
 
-                     </th>
+                    </th>
                     <td>
                         <p class="text-black-50 m-0"><i class="bi bi-journal-check"></i>
                             {{item.name}}</p>
@@ -56,42 +47,57 @@
                     <td>
                         <div class="circle"><span class="initials">AB</span></div>
                     </td>
-                    <td>    
-                        {{item.idSprint}}
+                    <td>
+                        @for (sp of sprints; track $index) {
+                           @if (sp.idSprint === item.idSprint) {
+                        {{sp.number}}
+                           }
+                        }
                     </td>
                     <td>
                         <div class="dropdown" style="cursor: pointer;">
-                            <p class="dropdown-toggle user-select-none"  data-bs-toggle="dropdown" aria-expanded="false">
-                              {{item.status}}
+                            <p class="dropdown-toggle user-select-none poppins-medium" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{item.status}}
                             </p>
                             <ul class="dropdown-menu">
-                              <li class="dropdown-item" >Not Started</li>
-                              <li class="dropdown-item" >In Progress</li>
-                              <li class="dropdown-item" >Done</li>
-                            </ul>
-                          </div>
+                                @if (item.status === "Not started") {
+                                <li class="dropdown-item" (click)="changeStatus(item.id, 'In Progress')">In Progress</li>
+                                <li class="dropdown-item"  (click)="changeStatus(item.id, 'Done')">Done</li>
+                                }
+                                @else if (item.status === "In Progress") {
+                                <li class="dropdown-item" (click)="changeStatus(item.id, 'Not started')">Not Started</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.id, 'Done')">Done</li>
+                                }
+                                @else if (item.status === "Done") {
+                                <li class="dropdown-item" (click)="changeStatus(item.id, 'Not started')">Not Started</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.id, 'In Progress')">In Progress</li>
+                                }
 
-                    
+                            </ul>
+                        </div>
+
+
                     </td>
                     <td>{{item.dateCreation}}</td>
-                </tr>            
+                </tr>
             </tbody>
-        }
+            }
         </table>
     </div>
 </section>
 
 <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel"> Add Task</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> Add Task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-add-task></app-add-task>
+            </div>
+
         </div>
-        <div class="modal-body">
-          <app-add-task></app-add-task>
-        </div>
-  
-      </div>
     </div>
-  </div>
+</div>
