@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Task } from '../Model/task.model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { SprintService } from './sprint.service';
 
 @Injectable({
@@ -32,11 +32,11 @@ export class TaskService {
       catchError(this.handleError));
   }
 
-  // updateStatusTask(idTask: number,status: string):Observable<any> {
+  updateStatusTask(idTask: number,status: string):Observable<any> { 
 
-  //   return this.http.get<Array<Task>>(`${this.urlBase}/project/${idProject}/sprints/tasks/${idTask}`,).pipe(
-  //     catchError(this.handleError));
-  // }
+    return this.http.put(`${this.urlBase}/project/23/sprints/task/${idTask}`,{status}).pipe(
+      catchError(this.handleError));
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

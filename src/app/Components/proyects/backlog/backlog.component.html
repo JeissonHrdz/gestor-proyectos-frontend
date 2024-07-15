@@ -58,20 +58,20 @@
                         <div class="dropdown" style="cursor: pointer;">
                             <p class="dropdown-toggle user-select-none poppins-medium" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                {{item.status}}
+                                {{item.status}}                             
                             </p>
                             <ul class="dropdown-menu">
                                 @if (item.status === "Not started") {
-                                <li class="dropdown-item" (click)="changeStatus(item.id, 'In Progress')">In Progress</li>
-                                <li class="dropdown-item"  (click)="changeStatus(item.id, 'Done')">Done</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'In Progress')">In Progress</li>
+                                <li class="dropdown-item"  (click)="changeStatus(item.idTask, 'Done')">Done</li>
                                 }
                                 @else if (item.status === "In Progress") {
-                                <li class="dropdown-item" (click)="changeStatus(item.id, 'Not started')">Not Started</li>
-                                <li class="dropdown-item" (click)="changeStatus(item.id, 'Done')">Done</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Not started')">Not Started</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Done')">Done</li>
                                 }
                                 @else if (item.status === "Done") {
-                                <li class="dropdown-item" (click)="changeStatus(item.id, 'Not started')">Not Started</li>
-                                <li class="dropdown-item" (click)="changeStatus(item.id, 'In Progress')">In Progress</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Not started')">Not Started</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'In Progress')">In Progress</li>
                                 }
 
                             </ul>

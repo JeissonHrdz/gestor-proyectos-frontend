@@ -16,7 +16,6 @@ import { Sprint } from '../../../Model/sprint.model';
   imports: [AddTaskComponent],
 })
 export class BacklogComponent {
-
   private taskService = inject(TaskService);
   private projectDetailsService = inject(ProjectDetailsService);
   private sprintServices = inject(SprintService);
@@ -48,9 +47,12 @@ export class BacklogComponent {
       });
   }
 
-  changeStatus(id:number,status: string) {
-    throw new Error('Method not implemented.');
-    }
+  changeStatus(id: number, status: string) {
+
+      this.taskService.updateStatusTask(id, status).subscribe(() => {
+        this.ngOnInit();
+      })
+  }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
