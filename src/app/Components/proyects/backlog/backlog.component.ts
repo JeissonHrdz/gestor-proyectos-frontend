@@ -7,13 +7,14 @@ import { Project } from '../../../Model/project.model';
 import { Task } from '../../../Model/task.model';
 import { SprintService } from '../../../Service/sprint.service';
 import { Sprint } from '../../../Model/sprint.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.css',
-  imports: [AddTaskComponent],
+  imports: [AddTaskComponent, CommonModule],
 })
 export class BacklogComponent {
   private taskService = inject(TaskService);

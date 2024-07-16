@@ -20,3 +20,31 @@ th , td{
    font-size: .9rem;
    color: white;   
 }
+
+
+.status{ 
+   color: #fff;
+   padding: .2rem;
+   border-radius: 8px;
+   padding-left: .6rem;
+   padding-right: .6rem;
+  
+}
+
+.done{
+   color: #218726;
+   background-color: #b6eeb9;
+   border-color: #b6eeb9;   
+}
+
+.in-progress{
+   color: #2f5ba7;
+   background-color: #b2c2dd;
+   border-color: #b4c4e1;
+}
+
+.no-started{
+   color: #3c3c3c;
+   background-color: #dbdbdb;
+   border-color: #dbdbdb;
+}

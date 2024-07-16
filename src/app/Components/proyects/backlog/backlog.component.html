@@ -49,29 +49,36 @@
                     </td>
                     <td>
                         @for (sp of sprints; track $index) {
-                           @if (sp.idSprint === item.idSprint) {
+                        @if (sp.idSprint === item.idSprint) {
                         {{sp.number}}
-                           }
+                        }
                         }
                     </td>
                     <td>
-                        <div class="dropdown" style="cursor: pointer;">
-                            <p class="dropdown-toggle user-select-none poppins-medium" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                {{item.status}}                             
+                        <div class="dropdown" style="cursor: pointer; width: fit-content;">
+                            <p class="dropdown-toggle user-select-none poppins-medium status m-0" data-bs-toggle="dropdown"
+                                aria-expanded="false" [ngClass]="{'done': item.status === 'Done' , 
+                                'in-progress': item.status === 'In Progress',
+                                'no-started': item.status === 'Not started'
+                                }">
+                                ● {{item.status}}
                             </p>
                             <ul class="dropdown-menu">
                                 @if (item.status === "Not started") {
-                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'In Progress')">In Progress</li>
-                                <li class="dropdown-item"  (click)="changeStatus(item.idTask, 'Done')">Done</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'In Progress')">In Progress
+                                </li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Done')">Done</li>
                                 }
                                 @else if (item.status === "In Progress") {
-                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Not started')">Not Started</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Not started')">Not Started
+                                </li>
                                 <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Done')">Done</li>
                                 }
                                 @else if (item.status === "Done") {
-                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Not started')">Not Started</li>
-                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'In Progress')">In Progress</li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'Not started')">Not Started
+                                </li>
+                                <li class="dropdown-item" (click)="changeStatus(item.idTask, 'In Progress')">In Progress
+                                </li>
                                 }
 
                             </ul>
