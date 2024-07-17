@@ -1,24 +1,23 @@
-<section class="container-fluid m-0 p-0">
-  <app-navbar></app-navbar>
-</section>
-<section
-  class="container-fluid"
-  style="position: absolute; height: calc(100% - 56px)"
->
-  <div class="row" style="height: 100%">
-    <div class="menu col-2 p-0" style="width: 250px">
+
+<section class="container-fluid" style="position: absolute; height: calc(100% - 56px)">
+  <div class="row" style="height: 100%; background-color: rgb(244, 250, 255);">
+    <div class="menu col-2 p-0" style="width: 200px">
       <app-menu-left></app-menu-left>
     </div>
-    <div
-      class="box-container col-10 p-4"
-      style="
+    <div class="box-container col-10 p-4" style="
         width: calc(100% - 250px);
         overflow: auto;
-        overflow-y: scroll;
+        overflow-y: hidden;
         height: 100%;
-        background-color: #f1f1f1;
-      "
-    >
+        background-color: #ffffff;
+        margin-top: 1rem;
+        margin-right: .3rem;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+      ">
       <app-projects *ngIf="loadProjects"></app-projects>
     </div>
   </div>
