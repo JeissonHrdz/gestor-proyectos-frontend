@@ -1,16 +1,15 @@
-*{
-    font-family: 'Plus Jakarta Sans';
+* {
+  font-family: "Plus Jakarta Sans";
 }
 
-button{
+button {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-    
 }
 
-.btn-basic{
+.btn-basic {
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -21,14 +20,12 @@ button{
   font-style: normal;
   font-size: 0.875rem;
   font-stretch: extra-condensed;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
-.btn-basic:hover{
-  background-color:  #eaeaea;
-  
+.btn-basic:hover {
+  background-color: #eaeaea;
 }
-
 
 .plus-jakarta-sans {
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -56,7 +53,6 @@ button{
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
-  
 }
 
 /* ICONS */
@@ -65,46 +61,52 @@ i {
   fill: #fff;
 }
 
-.i{
+.i {
   display: inline-block;
   width: 20px;
   height: 20px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   vertical-align: bottom;
-  margin-right: .25rem;
-  
+  margin-right: 0.25rem;
 }
 
-.i-add { 
-  background-image: url('assets/icons/add.svg');
+.i-add {
+  background-image: url("assets/icons/add.svg");
 }
 
 .i-dash {
-  background-image: url('assets/icons/dash.svg');
+  background-image: url("assets/icons/dash.svg");
 }
 
 .i-contact {
-  background-image: url('assets/icons/contact.svg');
+  background-image: url("assets/icons/contact.svg");
 }
 
-.i-project{
-  background-image: url('assets/icons/project.svg');
+.i-project {
+  background-image: url("assets/icons/project.svg");
 }
 
-.i-calendar{
-  background-image: url('assets/icons/calendar.svg');
+.i-calendar {
+  background-image: url("assets/icons/calendar.svg");
 }
 
-.i-settings{
-  background-image: url('assets/icons/settings.svg');
+.i-settings {
+  background-image: url("assets/icons/settings.svg");
 }
-.i-box{
-  background-image: url('assets/icons/box.svg');
+.i-box {
+  background-image: url("assets/icons/box.svg");
 }
 
+.i-code {
+  background-image: url("assets/icons/code.svg");
+}
 
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,67 +1,75 @@
 <section *ngIf="!projectDetails">
-<section class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <h4 class="float-start plus-jakarta-sans-semi-bold">Projects</h4>
-            <button data-bs-toggle="modal" data-bs-target="#exampleModal"
-             class="btn-basic float-end p-2 ps-3 pe-3 .plus-jakarta-sans-medium ">
-             <i class="i i-add"></i> Create Proyect</button>
+    <section class="container-fluid">
+        <div class="row" style="border-bottom: 1px solid #e0e0e0;">
+            <div class="col-12 p-2">
+                <h5 class="float-start plus-jakarta-sans-semi-bold m-2">Projects</h5>
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    class="btn-basic float-end p-2 ps-3 pe-3 .plus-jakarta-sans-medium ">
+                    <i class="i i-add"></i> Create Proyect</button>
+            </div>
         </div>
-    </div>
-    <br><br>
-    <div class="row">
-        <div class="col-4" *ngFor="let item of projects">
-            <div class="border p-4 shadow" (click)="getProjectDetails(item.idProject)" style="cursor: pointer;" >
-                <h6 class="poppins-medium">{{item.name}}</h6>
-                <span class="badge text-bg-primary p-2 poppins-light">In Progress</span>
-                <hr>
-                <div class="row">
-                    <div class="col-4">
-                        <p class="fs-4 m-0">25</p>
-                        <p class="fs-6 m-0 text-secondary">Taks</p>
+        <br><br>
+        <div class="row">
+            <div class="col-4" *ngFor="let item of projects">
+                <div class="border p-4 card-n mb-3" (click)="getProjectDetails(item.idProject)"
+                    style="cursor: pointer;">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="plus-jakarta-sans-medium fs-6">{{item.name}}</h6>
+                            <p class="fs-6 m-0 text-secondary">Date Finish: {{item.dateEnd.substring(0,10)}}</p>
+                        </div>
+                        <div class="col-4" style="display: flex;  justify-content: space-around;">
+                            <i class="i i-code" style="width: 60px; height: 60px;"></i>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <p class="fs-4 m-0">9</p>
-                        <p class="fs-6 m-0 text-secondary">Done</p>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="float-end" style="font-size: .875rem; color: #66a0eb;"> ● In Progress</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <p class="fs-4 m-0 ">14</p>
-                        <p class="fs-6 m-0 text-secondary">In Progress</p>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="progress progress-bar-n">
+                                <div class="progress-bar progress-bar-p-n" role="progressbar" style="width: 25%"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-12">
+                            <p class="float-start m-0">12
+                                <span style="color: #a4a4a4;">/</span>
+                                20
+                                <span style="color: #a4a4a4;">Total Task</span>
+                            </p>
+                            <p class="float-end">25%</p>
+                        </div>
+
                     </div>
                 </div>
-                <hr>
-                <div class="row">
-                    <div class="col-5">
-                        <p class="fs-6 m-0 text-secondary">Date Finish</p>
-                        <p class="fs-6 m-0"> {{item.dateEnd.substring(0,10)}}</p>
-                    </div>
-                    <div class="col-7">
-                        <p class="fs-6 m-0 text-secondary">Owner</p>
-                        <p class="fs-6 m-0"> Jeisson Hernandez</p>
-                    </div>
-                </div>                
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Modal add Proyect -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Project</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <app-add-project />
+                </div>
+
             </div>
         </div>
     </div>
 
 </section>
 
-<!-- Modal add Proyect -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New Project</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <app-add-project/>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-
-</section>
-
-  <app-project-details *ngIf="projectDetails"></app-project-details>
+<app-project-details *ngIf="projectDetails"></app-project-details>

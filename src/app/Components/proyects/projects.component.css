@@ -1,3 +1,16 @@
 .badge, .btn{
     font-weight: 300;
 }
+
+.card-n{
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+}
+.progress-bar-n{
+    height: .4rem;
+    border-radius: .5rem;
+  }
+  
+  .progress-bar-p-n{
+    background-color: #66a0eb;
+  }

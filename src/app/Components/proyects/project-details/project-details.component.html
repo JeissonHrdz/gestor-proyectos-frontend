@@ -1,23 +1,13 @@
  <section class="container-fluid ">
-    <div class="container">
-        <h3>{{project?.name}}</h3>
-    </div>
-    <br>
-    <div class="container shadow-sm p-4 bg-light rounded">
-        <div class="row g-0">
-            <div class="col-sm-6 col-md-8">
-                <h5 style="font-weight: 500;" class="float-start me-4">Sprint Planing</h5>
-                <button data-bs-toggle="modal" (click)="showSprintForm()" data-bs-target="#sprintModal"
-                    class="btn-basic float-start p-2  me-2 ">Create Sprint</button>
-
-                <button data-bs-toggle="modal" data-bs-target="#backlogModal" class="btn  float-start p-2 poppins-light"
-                    style="background-color: #794ade; color: white;" type="button">Backlog</button>
-            </div>
-            <div class="col-6 col-md-4">
-            </div>
+    <div class="row" style="border-bottom: 1px solid #e0e0e0;">
+        <div class="col-12 p-2">
+            <h5 class="float-start plus-jakarta-sans-semi-bold m-2">Projects > </h5> <p class="m-2">{{project?.name}}</p>
+            <button data-bs-toggle="modal" (click)="showSprintForm()" data-bs-target="#sprintModal"
+                class="btn-basic float-end p-2 ps-3 pe-3 .plus-jakarta-sans-medium ">
+                <i class="i i-add"></i> Add Sprint</button>
         </div>
     </div>
-    <br>
+
 
 <div class="container-fluid" style="height: 77%; overflow: scroll; overflow-x: hidden;">
     <div class="row">

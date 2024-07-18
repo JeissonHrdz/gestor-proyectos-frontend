@@ -1,14 +1,13 @@
-.menu-left { 
+.menu-left {
   height: 100%;
   background-color: rgb(244, 250, 255);
 }
 
 .list-menu ul {
   padding: 0;
- 
 }
 
-.list-menu li { 
+.list-menu li {
   padding: 0.6em;
   padding-left: 1.5em;
   font-size: 0.875rem;
@@ -17,15 +16,15 @@
   text-decoration: none;
   transition: 0.3 ease-in;
   color: rgb(62, 62, 62);
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .list-menu li:hover {
- background-color: rgba(230, 230, 230, 0.977);
+  background-color: rgba(230, 230, 230, 0.977);
 }
 
-i{
+i {
   font-size: 18px;
- 
 }
+
 
