@@ -102,6 +102,24 @@ i {
   background-image: url("assets/icons/code.svg");
 }
 
+.i-arrow-r{
+  background-image: url("assets/icons/arrow-r.svg");
+}
+
+.i-backlog{
+  background-image: url("assets/icons/backlog-gray.svg");
+}
+
+.i-sprint{
+  background-image: url("assets/icons/sprint.svg");
+}
+
+.i-resume{
+  background-image: url("assets/icons/resume.svg");
+  width: 20px;
+  height: 20px;
+}
+
 html,
 body {
   height: 100%;
