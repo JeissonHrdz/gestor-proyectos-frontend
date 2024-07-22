@@ -110,9 +110,14 @@ i {
   background-image: url("assets/icons/backlog-gray.svg");
 }
 
-.i-sprint{
+:root {
+  --icon-color: rgb(225, 55, 228); /* Cambia el color aquí */
+}
+
+.i-sprint{ 
   background-image: url("assets/icons/sprint.svg");
 }
+
 
 .i-resume{
   background-image: url("assets/icons/resume.svg");
