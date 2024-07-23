@@ -1,63 +1,90 @@
-h3{
-    font-weight: 300;
+h3 {
+  font-weight: 300;
 }
 
 .example-list {
-    border: solid 1px #ccc;
-    min-height: 60px;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-  }
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
 
-  .card{
-    cursor: move;
-  }
+.card {
+  cursor: move;
+}
 
-  .project-name-p{
-    background-color: #F3F4F7;
-    border-radius: 6px;
-    padding: 0.5rem;
-    margin: 0px;
-    border: 1px solid #e0e0e0;
-  }
-  
-  .menu-project{
-    display: flex;
-    align-items: center;
-    width: auto;
-    padding: .4rem;
-    padding-left: .8rem;
-    padding-right: .8rem;
-  }
+.project-name-p {
+  background-color: #f3f4f7;
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin: 0px;
+  border: 1px solid #e0e0e0;
+}
 
-  .menu-project:hover{
-    background-color: #fff;
-    border-radius: 6px;
-    color: #0b5ed7;
-    cursor: pointer;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
-    text-shadow: rgba(11, 94, 215, .3) 0px 0px 2px;
-  }
+.menu-project {
+  display: flex;
+  align-items: center;
+  width: auto;
+  padding: 0.4rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  transition: .1s ease-in-out;
+  margin-left: .2rem;
+  margin-right: .2rem;
+}
 
-  .menu-project:hover > .i-resume{ 
-    background-image:  url('../../../../assets/icons/resume-blue.svg');
-    text-shadow: rgba(11, 94, 215, .3) 0px 0px 2px; 
-  }
+.menu-project:hover {
+  background-color: #fff;
+  border-radius: 6px;
+  color: #0b5ed7;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
+  text-shadow: rgba(11, 94, 215, 0.3) 0px 0px 2px;
 
-  .menu-project:hover > .i-sprint{ 
-    background-image:  url('../../../../assets/icons/sprint-blue.svg');
-    text-shadow: rgba(11, 94, 215, .3) 0px 0px 2px; 
-  }
+}
 
-  .menu-project:hover > .i-backlog{ 
-    background-image:  url('../../../../assets/icons/backlog-blue.svg');
-    text-shadow: rgba(11, 94, 215, .3) 0px 0px 2px; 
-  }
+.menu-project:hover > .i-resume {
+  background-image: url("../../../../assets/icons/resume-blue.svg");
+  text-shadow: rgba(11, 94, 215, 0.3) 0px 0px 2px;
+}
 
-  
+.menu-project:hover > .i-sprint {
+  background-image: url("../../../../assets/icons/sprint-blue.svg");
+  text-shadow: rgba(11, 94, 215, 0.3) 0px 0px 2px;
+}
+
+.menu-project:hover > .i-backlog {
+  background-image: url("../../../../assets/icons/backlog-blue.svg");
+  text-shadow: rgba(11, 94, 215, 0.3) 0px 0px 2px;
+}
+
+.menu-project-focus{
+  background-color: #fff;
+  border-radius: 6px;
+  color: #0b5ed7;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
+  text-shadow: rgba(11, 94, 215, 0.3) 0px 0px 2px;
+}
+
+.i-resume-focus{
+  background-image: url("../../../../assets/icons/resume-blue.svg");
+}
+
+.i-backlog-focus{
+  background-image: url("../../../../assets/icons/backlog-blue.svg");
+}
+
+.i-sprint-focus{
+  background-image: url("../../../../assets/icons/sprint-blue.svg");
+}

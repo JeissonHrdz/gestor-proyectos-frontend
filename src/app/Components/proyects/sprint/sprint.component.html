@@ -1,0 +1,37 @@
+<section style="height: auto;">
+    <div class="row bg-white overflow-y-auto" style="border-top: 1px solid #e0e0e0; border-radius: 10px;">
+        <div class="col-12">
+            <div class="example-container" *ngFor="let sp of sprints">
+                <br>
+                <div class="accordion  shadow-sm" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#collapseOne'+ sp.number" aria-expanded="false"
+                                aria-controls="collapseOne" style="box-shadow: none; background-color: #FFF">
+                                <h6>Sprint {{sp.number}} </h6>
+                            </button>
+                        </h2>
+                        <div id="collapseOne{{sp.number}}" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body ">
+                                @for (item of done; track item) {
+                                <div class="card text-bg-light mb-3 example-box" id="draggable{{sp.number}}">
+                                    <div class="card-header">{{item}}1</div>
+                                    <div class="card-body">
+                                        <h6 class="card-title">Crear el login.</h6>
+                                        <p class="card-text">
+                                            <span class="badge text-bg-secondary">Not Started</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

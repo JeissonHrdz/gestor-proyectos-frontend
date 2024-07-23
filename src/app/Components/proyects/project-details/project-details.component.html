@@ -15,26 +15,23 @@
          border: 1px solid #e0e0e0;
          padding: .1rem;"       
          >
-            <div class="col-2 menu-project">
+            <div class="col-2 menu-project" id="resumeItem" (click)="openMenu('resumeItem')">
                 <i class="i i-resume"></i>
                 Resume
             </div>
-            <div class="col-2 menu-project">
+            <div class="col-2 menu-project" id="sprintItem"  (click)="openMenu('sprintItem')">
                 <i class="i i-sprint"></i>
                 Sprints
             </div>
-            <div class="col-2 menu-project">
+            <div class="col-2 menu-project" id="backlogItem"  (click)="openMenu('backlogItem')">
                 <i class="i i-backlog"></i> Backlog
             </div>
             
         </div>
     </div>
-
-
-
-
-
-    <div class="row bg-white" style="border-top: 1px solid #e0e0e0; border-radius: 10px; ">
+<app-sprint [hidden]="!sprintOpen"></app-sprint>
+<app-backlog [hidden]="!backlogOpen"></app-backlog>
+    <!-- <div class="row bg-white" style="border-top: 1px solid #e0e0e0; border-radius: 10px; ">
         <div class="col-12">
             <div class="example-container" *ngFor="let sp of sprints">
                 <br>
@@ -68,11 +65,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </section>
 <br>
-<app-backlog></app-backlog>
+
 <!--MODAL SPRINT-->
 <div class="modal fade" id="sprintModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
